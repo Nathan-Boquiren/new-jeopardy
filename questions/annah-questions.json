@@ -1,0 +1,96 @@
+{
+    "categoryNames": {
+        "category-1": "Royal-Tea",
+        "category-2": "Lad De Da",
+        "category-3": "Star Bursts",
+        "category-4": "Paper Pixel"
+    },
+    "category-1": {
+        "200": {
+            "question": "This is the legal action that King Henry the 8th sought from the Catholic Church, because a divorce would not allow him to remarry.",
+            "answer": "What is an annulment?"
+        },
+        "400": {
+            "question": "Don’t look now, but this Austrian Royal family is well known for a facial feature thought to be caused by inbreeding.",
+            "answer": "Who are the Habsburgs or what is the Habsburg Jaw?"
+        },
+        "600": {
+            "question": "Gossip has that Shah Jahan built this for his recently passed away wife out of grief for her passing.",
+            "answer": "What is the Taj Mahal?"
+        },
+        "800": {
+            "question": "16 French kings share the same name, the last of which was overthrown and beheaded.",
+            "answer": "Who is Louis?"
+        },
+        "1000": {
+            "question": "This term, a play on the term for Britain’s exit from the EU, is used to describe the abrupt exit of Prince Harry and Meghan from the British royal family.",
+            "answer": "What is Megxit?"
+        }
+    },
+    "category-2": {
+        "200": {
+            "question": "The full version of the acronym J.A.R.V.I.S.",
+            "answer": "What is Just a Rather Very Intelligent System?"
+        },
+        "400": {
+            "question": "This person was the first Avenger.",
+            "answer": "Who is Steve Rogers/Captain America?"
+        },
+        "600": {
+            "question": "6 characters have held the title Robin, sidekick of Batman. Name 3 of them.",
+            "answer": "Who are Dick Grayson, Jason Todd, Tim Drake, Damian Wayne, Stephanie Brown, or Carrie Kelley?"
+        },
+        "800": {
+            "question": "This stand-alone anti-hero who has teamed up with Spider-Man and the X-Men is known as ‘the merc with a mouth’.",
+            "answer": "Who is Deadpool?"
+        },
+        "1000": {
+            "question": "Known for being the home of Superman, Batman, and the Green Lantern, this is what the acronym D.C. stands for.",
+            "answer": "What are Detective Comics?"
+        }
+    },
+    "category-3": {
+        "200": {
+            "question": "A term for a giant cloud of space dust, Latin for mist or vapor.",
+            "answer": "What is a nebula?"
+        },
+        "400": {
+            "question": "These are the 4 heavenly bodies known as gas giants.",
+            "answer": "What are Jupiter, Saturn, Uranus, and Neptune?"
+        },
+        "600": {
+            "question": "Why ask for directions when you can look for this star?",
+            "answer": "What is the North Star?"
+        },
+        "800": {
+            "question": "The term for a massive explosion that occurs when a star runs out of nuclear power.",
+            "answer": "What is a supernova?"
+        },
+        "1000": {
+            "question": "The man who rejected Pluto.",
+            "answer": "Who is Neil deGrasse Tyson?"
+        }
+    },
+    "category-4": {
+        "200": {
+            "question": "‘20 pounds of Brown Sugar.’",
+            "answer": "What is Anne of Green Gables?"
+        },
+        "400": {
+            "question": "This film series is the best book-to-movie adaptation starring Elijah Wood and Viggo Mortensen, spanning over 11 hours and holding 30 Oscar nominations and 17 wins.",
+            "answer": "What is The Lord of the Rings Trilogy?"
+        },
+        "600": {
+            "question": "This book series, which includes werewolves and vampires and is named after a time of day, should never have been written and turned into a movie that should never have been produced.",
+            "answer": "What is the Twilight Series?"
+        },
+        "800": {
+            "question": "Frankly, my dear, this was the first motion picture to feature a swear word at the end of the film and became its most quotable line.",
+            "answer": "What is Gone With the Wind?"
+        },
+        "1000": {
+            "question": "This complete British allegory book series with biblical themes was left unfinished in the film world.",
+            "answer": "What is The Chronicles of Narnia?"
+        }
+    }
+}

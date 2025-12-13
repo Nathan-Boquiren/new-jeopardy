@@ -1,0 +1,133 @@
+{
+    "mainCategories": [
+        {
+            "name": "Young Animals",
+            "questions": {
+                "200": {
+                    "question": "This black and white arctic animal has fluffy down feathers when young, that get replaced as it gets older",
+                    "answer": "What is a penguin?<br><img src='https://i.pinimg.com/originals/d9/b3/ae/d9b3ae779f3c1b95b2dbac89327924d1.jpg' width='50%'>"
+                },
+                "400": {
+                    "question": "This barnyard animal has rectangular pupils, and its young are called kids.",
+                    "answer": "What is a goat?<br><img src='https://cdn.pixabay.com/photo/2021/04/01/12/23/goat-6142070_1280.jpg' width='50%'>"
+                },
+                "600": {
+                    "question": "This is the name for a young kangaroo.",
+                    "answer": "What is a joey?<br><img src='https://media.istockphoto.com/photos/joey-picture-id520095582?k=6&m=520095582&s=612x612&w=0&h=B8ih3983ydoprIDH5zzvjvu-TbWGuHNPvugrNWiG6Ys=' width='50%'>"
+                },
+                "800": {
+                    "question": "This is the term for a young platypus.",
+                    "answer": "What is a puggle?<br><img src='https://i.pinimg.com/originals/ac/26/47/ac2647d2e1f0fd7e85aa54244f2191e8.jpg' width='40%'>"
+                },
+                "1000": {
+                    "question": "These large white wading birds are known for chicks that sometimes commit siblicide to survive.",
+                    "answer": "What is a great egret?<br><img src='https://th.bing.com/th/id/R.796fafb5590ab54dee6e81d8a694ca5a?rik=eV9vouuQ5L6hww&riu=http%3a%2f%2fdskogsphoto.com%2fwp-content%2fuploads%2f2018%2f05%2f7320-Great-Egret-Chicks-Ardea-alba.-Smith-Oaks-Rookery-High-Island-Texasd.jpg&ehk=Oj2538Q%2f2CwBm1ZBxbrGYs7ejkk6CyNb9V16LOxeHu4%3d&risl=&pid=ImgRaw&r=0' width='50%'>"
+                }
+            }
+        },
+        {
+            "name": "Biblical Offspring",
+            "questions": {
+                "200": {
+                    "question": "This infant floated in a basket on the Nile before being found by Pharaoh’s daughter.",
+                    "answer": "Who is Moses?<br><img src='https://i.pinimg.com/originals/33/dd/08/33dd089da38827a88b8c66d99c40963d.jpg' width='50%'>"
+                },
+                "400": {
+                    "question": "This Old Testament figure was the long-awaited son of Abraham and Sarah.",
+                    "answer": "Who is Isaac?<br><img src='https://cdnb.artstation.com/p/assets/images/images/018/674/547/large/jason-dull-asset.jpg?1560276883' width='50%'>"
+                },
+                "600": {
+                    "question": "This prophet’s birth was announced by an angel to his elderly parents, Zechariah and Elizabeth.",
+                    "answer": "Who is John the Baptist?<br><img src='https://wol.jw.org/en/wol/mp/r1/lp-e/lfb/2017/673' width='50%'>"
+                },
+                "800": {
+                    "question": "This son of Hannah grew up to become a prophet after being dedicated to the Lord at birth.",
+                    "answer": "Who is Samuel?<br><img src='https://i.pinimg.com/736x/41/bb/f1/41bbf18c7b4955ef20ee210b2549389b.jpg' width='50%'>"
+                },
+                "1000": {
+                    "question": "This twin brother grabbed his brother’s heel at birth.",
+                    "answer": "Who is Jacob?<br><img src='https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F77657924-b720-47a3-8447-e531302e2478_1200x600.jpeg' width='50%'>"
+                }
+            }
+        },
+        {
+            "name": "Well-Known Wee Ones",
+            "questions": {
+                "200": {
+                    "question": "This tiny green creature is also called The Child.",
+                    "answer": "Who is Grogu/Baby Yoda?<br><img src='https://th.bing.com/th/id/R.829e3d4726a4000dedef46899a44b075?rik=EIe7mJsd6dyW4A&pid=ImgRaw&r=0' width='70%'>"
+                },
+                "400": {
+                    "question": "Born in Bethlehem and visited by shepherds and wise men, this child is central to Nativity.",
+                    "answer": "Who is Jesus?<br><img src='https://th.bing.com/th/id/R.9532defc13d25621aad9ec68b9c84085?rik=1V9CFve%2b7YchaQ&pid=ImgRaw&r=0' width='50%'>"
+                },
+                "600": {
+                    "question": "This baby food mascot was first sketched in 1928.",
+                    "answer": "Who is the Gerber Baby?<br><img src='https://i.smalljoys.me/2019/07/img_5d1db9d6ee6d0.png?resize=1024%2C1024&ssl=1&strip=all' width='40%'>"
+                },
+                "800": {
+                    "question": "Born in 1587, she was the first English child born in the Americas.",
+                    "answer": "Who is Virginia Dare?<br><img src='https://cdn.britannica.com/78/122578-004-B11C2CBB/Baptism-Virginia-Dare-Jamestown-Exposition-1907.jpg' width='100%'>"
+                },
+                "1000": {
+                    "question": "Sammy Griner became famous as this meme known for a determined expression while clenching a fistful of sand.",
+                    "answer": "Who is Success Kid?<br><img src='../baby-shower/success-kid.webp'>"
+                }
+            }
+        },
+        {
+            "name": "Digital Diaperlings",
+            "questions": {
+                "200": {
+                    "question": "This 2017 animated film follows a suit-wearing infant who teams up with his brother on a mission.",
+                    "answer": "What is The Boss Baby?<br><img src='https://cdn.shopify.com/s/files/1/1416/8662/products/Boss_Baby_2017_original_film_art_1200x.jpg?v=1578165768' width='30%'>"
+                },
+                "400": {
+                    "question": "In this animated film, storks deliver children, and a girl named Tulip aids a unique delivery mission.",
+                    "answer": "What is Storks?<br><img src='https://th.bing.com/th/id/R.da8c84ffb5f06313aa5c92ca20b1ccbf?rik=oI3WlC%2fK2jkiJw&riu=http%3a%2f%2fpayorwait.com%2fwp-content%2fuploads%2f2016%2f09%2fstorks.jpg&ehk=gukIIMuiv1mxCC%2fziWK95TM97vUls53wL2ouyRQ%2bJuE%3d&risl=&pid=ImgRaw&r=0' width='50%'>"
+                },
+                "600": {
+                    "question": "This 1994 comedy follows a kidnapped 2 year-old who outsmarts crooks while crawling around Chicago.",
+                    "answer": "What is Baby's Day Out?<br><img src='https://ntvb.tmsimg.com/assets/p15781_v_h10_aa.jpg?w=1280&h=720' width='50%'>"
+                },
+                "800": {
+                    "question": "This animated YouTube channel, known for nursery rhymes and addicting visuals, is the 2nd most viewed channel in the world.",
+                    "answer": "What is Cocomelon<br><img src='https://i-viaplay-com.akamaized.net/viaplay-prod/541/824/1626251557-616ba2795d077f6413514a6f33c764a04689c56e.jpg?width=1600&height=900' width='50%'>"
+                },
+                "1000": {
+                    "question": "This super annoying children’s song about multi-generational predation is the most-viewed video on YouTube.",
+                    "answer": "What is Baby Shark?<br><img src='../baby-shower/baby-shark.webp' width='70%'>"
+                }
+            }
+        },
+        {
+            "name": "Tiny Humans",
+            "questions": {
+                "200": {
+                    "question": "Newborns are typically born this many months after conception.",
+                    "answer": "What is 9 months?<br><img src='https://123sonography.com/sites/default/files/image/images/us-101-11-ultrasound-image-plain.png' width='50%'>"
+                },
+                "400": {
+                    "question": "This is the number of surviving children from a single birth, setting the world record.",
+                    "answer": "What is 9 children?<br><img src='https://th.bing.com/th/id/R.371ca58340a5bf52d515638a02424177?rik=FIhJqt0aOEG3Ag&pid=ImgRaw&r=0' width='50%'>"
+                },
+                "600": {
+                    "question": "This is the average number of steps a toddler takes per minute.",
+                    "answer": "What is 176?<br><img src='https://media.front.xoedge.com/images/4835898e-54be-4824-8547-8c9d8ec18ea2' width='50%'>"
+                },
+                "800": {
+                    "question": "This is about how long it takes for a child to develop defined fingerprints after conception.",
+                    "answer": "What is 17 weeks?<br><img src='https://thumbs.dreamstime.com/b/baby-handprints-black-ink-photograph-newborn-white-paper-52799962.jpg' width='50%'>"
+                },
+                "1000": {
+                    "question": "This is the most popular name for little girls as of 2025.",
+                    "answer": "What is Olivia?<br><img src='https://static.vecteezy.com/system/resources/previews/035/804/723/non_2x/ai-generated-sleeping-newborn-baby-in-a-wrap-on-pink-blanket-free-photo.jpg' width='50%'>"
+                }
+            }
+        }
+    ],
+    "finalJeopardy": {
+        "question": "This Greek infant figure thwarted a serpentine attack in his cradle.",
+        "answer": "Who is Hercules?<br><img src='https://th.bing.com/th/id/R.dd48d83fd25f7366306ae3a5c0a99db4?rik=AzAA8AhyNAtMxg&pid=ImgRaw&r=0' width='60%'>"
+    }
+}

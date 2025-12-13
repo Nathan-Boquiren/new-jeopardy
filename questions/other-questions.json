@@ -1,0 +1,134 @@
+{
+    "mainCategories": [
+        {
+            "name": "Um, Actually",
+            "questions": {
+                "200": {
+                    "question": "This is the most abundant element in the universe.",
+                    "answer": "What is hydrogen?"
+                },
+                "400": {
+                    "question": "This pigment is responsible for making plants appear green.",
+                    "answer": "What is chlorophyll?"
+                },
+                "600": {
+                    "question": "An angle greater than 90 degrees but less than 180 degrees is called this.",
+                    "answer": "What is obtuse?"
+                },
+                "800": {
+                    "question": "This term describes 0 degrees Kelvin, the point at which all particles stop moving.",
+                    "answer": "What is absolute zero?"
+                },
+                "1000": {
+                    "question": "This is the mathematical formula used to solve quadratic equations.",
+                    "answer": "What is x = (-b ± √b² - 4ac) / 2a?"
+                }
+            }
+        },
+        {
+            "name": "The Animal Kingdom",
+            "questions": {
+                "200": {
+                    "question": "The fear of spiders is known as this.",
+                    "answer": "What is arachnophobia?"
+                },
+                "400": {
+                    "question": "Female elephants are called this.",
+                    "answer": "What is a cow?"
+                },
+                "600": {
+                    "question": "Bees are found on every continent on Earth except for this one.",
+                    "answer": "What is Antarctica?"
+                },
+                "800": {
+                    "question": "This is the term for an adult female horse.",
+                    "answer": "What is a mare?"
+                },
+                "1000": {
+                    "question": "Sharks have this many bones in their bodies.",
+                    "answer": "What is zero?"
+                }
+            }
+        },
+        {
+            "name": "Renaissance",
+            "questions": {
+                "200": {
+                    "question": "This artist is known for painting the <em>Mona Lisa</em>.",
+                    "answer": "Who is Leonardo da Vinci?"
+                },
+                "400": {
+                    "question": "'Renaissance' is a French term meaning this.",
+                    "answer": "What is rebirth?"
+                },
+                "600": {
+                    "question": "This artist painted the ceiling of the Sistine Chapel.",
+                    "answer": "Who is Michelangelo?"
+                },
+                "800": {
+                    "question": "This term means 'the language of the common people.'",
+                    "answer": "What is vernacular?"
+                },
+                "1000": {
+                    "question": "This Italian city-state, known for its wealth and political power during the Renaissance, was governed by the powerful Medici family for much of the 15th century.",
+                    "answer": "What is Florence?"
+                }
+            }
+        },
+        {
+            "name": "Biology",
+            "questions": {
+                "200": {
+                    "question": "The largest organ in the human body is this.",
+                    "answer": "What is skin?"
+                },
+                "400": {
+                    "question": "The human body contains this many bones.",
+                    "answer": "What is 206?"
+                },
+                "600": {
+                    "question": "This is the colored part of the human eye that controls how much light passes through the pupil.",
+                    "answer": "What is the iris?"
+                },
+                "800": {
+                    "question": "This is the pigment that colors the skin.",
+                    "answer": "What is melanin?"
+                },
+                "1000": {
+                    "question": "This is the hardest substance in the human body.",
+                    "answer": "What is tooth enamel?"
+                }
+            }
+        },
+        {
+            "name": "Superheros",
+            "questions": {
+                "200": {
+                    "question": "The Man of Steel is another name for this superhero.",
+                    "answer": "Who is Superman?"
+                },
+                "400": {
+                    "question": "This superhero has super tools such as the magic lasso and bullet-proof bracelets.",
+                    "answer": "Who is Wonder Woman?"
+                },
+                "600": {
+                    "question": "This superhero is known as the \"Scarlet Speedster.\"",
+                    "answer": "Who is The Flash?"
+                },
+                "800": {
+                    "question": "This superhero said, 'That's my secret, cap. I'm always angry.",
+                    "answer": "Who is The Hulk?"
+                },
+                "1000": {
+                    "question": "This is the state where Peter Quill is from.",
+                    "answer": "What is Missouri"
+                }
+            }
+        }
+    ],
+
+    "finalJeopardy": {
+        "question": "This Roman emperor's last words were \"Et tu, Brute?\"",
+        "answer": "Who is Julius Caesar?"
+    }
+}

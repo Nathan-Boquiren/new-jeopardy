@@ -1,0 +1,133 @@
+{
+    "mainCategories": [
+        {
+            "name": "World War II",
+            "questions": {
+                "100": {
+                    "question": "This surprise attack on December 7, 1941, led the United States to enter World War II.",
+                    "answer": "What is the attack on Pearl Harbor?"
+                },
+                "200": {
+                    "question": "He was the cigar-smoking British Prime Minister during most of World War II.",
+                    "answer": "Who is Winston Churchill?"
+                },
+                "300": {
+                    "question": "This was the codename for the Allied invasion of Normandy on June 6, 1944.",
+                    "answer": "What is Operation Overlord?"
+                },
+                "400": {
+                    "question": "This was the name of Hitler’s massive but doomed invasion of the Soviet Union in 1941.",
+                    "answer": "What is Operation Barbarossa?"
+                },
+                "500": {
+                    "question": "He was the Japanese foreign minister who signed the surrender aboard the USS Missouri in 1945.",
+                    "answer": "Who is Mamoru Shigemitsu?"
+                }
+            }
+        },
+        {
+            "name": "Commanders-in-Chief",
+            "questions": {
+                "100": {
+                    "question": "He was the first President of the United States.",
+                    "answer": "Who is George Washington?"
+                },
+                "200": {
+                    "question": "He issued the Emancipation Proclamation in 1863.",
+                    "answer": "Who is Abraham Lincoln?"
+                },
+                "300": {
+                    "question": "He was the only U.S. president to serve more than two terms.",
+                    "answer": "Who is Franklin D. Roosevelt?"
+                },
+                "400": {
+                    "question": "He became president after Nixon resigned in 1974.",
+                    "answer": "Who is Gerald Ford?"
+                },
+                "500": {
+                    "question": "Before becoming president, he served as the Supreme Allied Commander in Europe during World War II.",
+                    "answer": "Who is Dwight D. Eisenhower?"
+                }
+            }
+        },
+        {
+            "name": "Holy Dads!",
+            "questions": {
+                "100": {
+                    "question": "He was the father of Cain, Abel, and Seth.",
+                    "answer": "Who is Adam?"
+                },
+                "200": {
+                    "question": "This man was willing to sacrifice his son Isaac before God intervened.",
+                    "answer": "Who is Abraham?"
+                },
+                "300": {
+                    "question": "He had twelve sons, including Joseph and Benjamin.",
+                    "answer": "Who is Jacob?"
+                },
+                "400": {
+                    "question": "This priest and father was rendered mute until his son John was born.",
+                    "answer": "Who is Zechariah?"
+                },
+                "500": {
+                    "question": "He raised Jesus as his own son, though he wasn’t the biological father.",
+                    "answer": "Who is Joseph?"
+                }
+            }
+        },
+        {
+            "name": "Dad Jokes",
+            "questions": {
+                "200": {
+                    "question": "This beverage is what dads say they run on instead of sleep.",
+                    "answer": "What is coffee?"
+                },
+                "400": {
+                    "question": "Dads say this is why they don’t need a watch—they just look at it instead.",
+                    "answer": "What is the sun?"
+                },
+                "600": {
+                    "question": "This tool is what dads joke is the only thing keeping the house together.",
+                    "answer": "What is duct tape?"
+                },
+                "800": {
+                    "question": "Dads say these noisy insects are why they can’t hear the TV after dark.",
+                    "answer": "What are crickets?"
+                },
+                "1000": {
+                    "question": "This amount of time is what dads say they’re napping for when just resting their eyes.",
+                    "answer": "What is five minutes?"
+                }
+            }
+        },
+        {
+            "name": "Know Your Offspring",
+            "questions": {
+                "100": {
+                    "question": "This is the favorite color of your youngest child.",
+                    "answer": "What is [Child's Favorite Color]?"
+                },
+                "200": {
+                    "question": "This is the name of your child's favorite stuffed animal or toy.",
+                    "answer": "What is [Toy Name]?"
+                },
+                "300": {
+                    "question": "This is the food your child asks for most often.",
+                    "answer": "What is [Favorite Food]?"
+                },
+                "400": {
+                    "question": "This is the movie or TV show your child can watch over and over again.",
+                    "answer": "What is [Movie or Show Name]?"
+                },
+                "500": {
+                    "question": "This is the hobby or skill your child spends the most time practicing.",
+                    "answer": "What is [Hobby or Skill]?"
+                }
+            }
+        }
+    ],
+    "finalJeopardy": {
+        "question": "This woman is credited with founding Father's Day in the United States, inspired by her own father, a Civil War veteran.",
+        "answer": "Who is Sonora Smart Dodd?"
+    }
+}

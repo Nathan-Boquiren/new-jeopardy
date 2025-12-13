@@ -1,0 +1,158 @@
+{
+    "mainCategories": [
+        {
+            "name": "Founding Fathers",
+            "questions": {
+                "200": {
+                    "question": "This Founding Father was the first President of the United States.",
+                    "answer": "Who is George Washington?"
+                },
+                "400": {
+                    "question": "He wrote the Declaration of Independence and later became the third U.S. President.",
+                    "answer": "Who is Thomas Jefferson?"
+                },
+                "600": {
+                    "question": "This Founding Father is known for his experiments with electricity and his role in the Continental Congress.",
+                    "answer": "Who is Benjamin Franklin?"
+                },
+                "800": {
+                    "question": "He proposed the Virginia Plan, earning him the title 'Father of the Constitution.'",
+                    "answer": "Who is James Madison?"
+                },
+                "1000": {
+                    "question": "This Founding Father’s essays in The Federalist Papers defended the new Constitution under the pseudonym Publius.",
+                    "answer": "Who is Alexander Hamilton?"
+                }
+            }
+        },
+        {
+            "name": "Revolutionary Battles",
+            "questions": {
+                "200": {
+                    "question": "This 1775 battle, fought on Breed’s Hill, showed the British the colonists could fight.",
+                    "answer": "What is the Battle of Bunker Hill?"
+                },
+                "400": {
+                    "question": "This 1777 battle was a turning point, convincing France to ally with the Americans.",
+                    "answer": "What is the Battle of Saratoga?"
+                },
+                "600": {
+                    "question": "This 1781 battle in Virginia ended with British General Cornwallis’ surrender.",
+                    "answer": "What is the Battle of Yorktown?"
+                },
+                "800": {
+                    "question": "In this 1776 battle, Washington crossed the Delaware River to surprise Hessian troops.",
+                    "answer": "What is the Battle of Trenton?"
+                },
+                "1000": {
+                    "question": "This 1775 battle saw the capture of a British fort and cannons later used in Boston.",
+                    "answer": "What is the Battle of Fort Ticonderoga?"
+                }
+            }
+        },
+        {
+            "name": "The Declaration",
+            "questions": {
+                "200": {
+                    "question": "This date marks the adoption of the Declaration of Independence.",
+                    "answer": "What is July 4, 1776?"
+                },
+                "400": {
+                    "question": "This Virginian was the primary author of the Declaration.",
+                    "answer": "Who is Thomas Jefferson?"
+                },
+                "600": {
+                    "question": "This was the number of colonies that signed the Declaration in 1776.",
+                    "answer": "What is thirteen?"
+                },
+                "800": {
+                    "question": "This signer, known for his large signature, was a merchant from Massachusetts.",
+                    "answer": "Who is John Hancock?"
+                },
+                "1000": {
+                    "question": "This is the number of times God was mentioned or referenced in the Declaration of Independence.",
+                    "answer": "What is four?"
+                }
+            }
+        },
+        {
+            "name": "American Symbols",
+            "questions": {
+                "200": {
+                    "question": "This bird is the national emblem of the United States.",
+                    "answer": "What is the bald eagle?"
+                },
+                "400": {
+                    "question": "This iconic bell in Philadelphia is a symbol of American freedom.",
+                    "answer": "What is the Liberty Bell?"
+                },
+                "600": {
+                    "question": "This flag, with 13 stars, inspired a famous patriotic song.",
+                    "answer": "What is the Star-Spangled Banner?"
+                },
+                "800": {
+                    "question": "This statue, a gift from France, stands in New York Harbor.",
+                    "answer": "What is the Statue of Liberty?"
+                },
+                "1000": {
+                    "question": "These four presidents are carved into a South Dakota monument.",
+                    "answer": "Who are Washington, Jefferson, Teddy Roosevelt, and Lincoln?"
+                }
+            }
+        },
+        {
+            "name": "Misc. 1",
+            "questions": {
+                "200": {
+                    "question": "This tax on paper goods in 1765 sparked colonial protests.",
+                    "answer": "What is the Stamp Act?"
+                },
+                "400": {
+                    "question": "This Boston event in 1773 saw colonists dump tea into the harbor.",
+                    "answer": "What is the Boston Tea Party?"
+                },
+                "600": {
+                    "question": "As of July 4, 2025, this is the number of years America has been a country.",
+                    "answer": "What is 249?"
+                },
+                "800": {
+                    "question": "This 1787 meeting in Philadelphia drafted the U.S. Constitution.",
+                    "answer": "What is the Constitutional Convention?"
+                },
+                "1000": {
+                    "question": "This physician, who sent Paul Revere on his midnight ride, died at Bunker Hill.",
+                    "answer": "Who is Joseph Warren?"
+                }
+            }
+        },
+        {
+            "name": "Misc. 2",
+            "questions": {
+                "200": {
+                    "question": "This 1770 clash in Boston saw five colonists killed by British soldiers.",
+                    "answer": "What is the Boston Massacre?"
+                },
+                "400": {
+                    "question": "This nickname for American Revolutionary soldiers referenced their quick readiness.",
+                    "answer": "What is Minutemen?"
+                },
+                "600": {
+                    "question": "This American sport, often played on 4th of July, is called the national pastime.",
+                    "answer": "What is baseball?"
+                },
+                "800": {
+                    "question": "This Founding Father’s face appears on the U.S. quarter coin.",
+                    "answer": "Who is George Washington?"
+                },
+                "1000": {
+                    "question": "This Founding Father’s face appears on the U.S. dime coin.",
+                    "answer": "Who is Franklin Delano Roosevelt?"
+                }
+            }
+        }
+    ],
+    "finalJeopardy": {
+        "question": "This man, both a signer of the Declaration and a president, died on July 4, 1826, the 50th anniversary of independence.",
+        "answer": "Who was Thomas Jefferson?"
+    }
+}

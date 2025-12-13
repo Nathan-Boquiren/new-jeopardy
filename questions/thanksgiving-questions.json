@@ -1,0 +1,134 @@
+{
+    "topicName": "Thanksgiving",
+    "mainCategories": [
+        {
+            "name": "Turkey Talk",
+            "questions": {
+                "200": {
+                    "question": "An adult male of this Thanksgiving bird is known by this term.",
+                    "answer": "What is a tom?"
+                },
+                "400": {
+                    "question": "A baby turkey is called this.",
+                    "answer": "What is a poult?"
+                },
+                "600": {
+                    "question": "A full grown turkey has about this many feathers.",
+                    "answer": "What is 3,500?"
+                },
+                "800": {
+                    "question": "Approximately this many turkeys are eaten each year on Thanksgiving in the United States.",
+                    "answer": "What is 46 million?"
+                },
+                "1000": {
+                    "question": "This American inventor and diplomat once advocated for the turkey as the national bird.",
+                    "answer": "Who is Benjamin Franklin?"
+                }
+            }
+        },
+        {
+            "name": "The Pilgrims",
+            "questions": {
+                "200": {
+                    "question": "This vessel carried 102 passengers from England to the New World in 1620.",
+                    "answer": "What is the Mayflower?"
+                },
+                "400": {
+                    "question": "The Pilgrims established their colony at this rocky Massachusetts site.",
+                    "answer": "What is Plymouth?"
+                },
+                "600": {
+                    "question": "This governor chronicled the pilgrim's early years and helped organize the first feast.",
+                    "answer": "Who is William Bradford?"
+                },
+                "800": {
+                    "question": "Seeking religious freedom, the Pilgrims separated from this church before sailing to America.",
+                    "answer": "What is the Church of England?"
+                },
+                "1000": {
+                    "question": "Before Plymouth, the Pilgrims lived in exile in this country for over a decade.",
+                    "answer": "What is The Netherlands (specifically in Leiden)?"
+                }
+            }
+        },
+        {
+            "name": "The First Thanksgiving",
+            "questions": {
+                "200": {
+                    "question": "The first Thanksgiving celebration lasted this many days.",
+                    "answer": "What is Three Days?"
+                },
+                "400": {
+                    "question": "While turkey is in modern Thanksgiving meals, the main meat for the first thanksgiving was this.",
+                    "answer": "What is venison?"
+                },
+                "600": {
+                    "question": "Around 90 members of this Native American tribe joined the Pilgrims for the first Thanksgiving meal.",
+                    "answer": "What is the Wampanoag?"
+                },
+                "800": {
+                    "question": "Between the natives and the pilgrims, there were more of this group at the celebration.",
+                    "answer": "What is the natives?"
+                },
+                "1000": {
+                    "question": "The Native guests contributed this number of deer to the meal.",
+                    "answer": "What is five?"
+                }
+            }
+        },
+        {
+            "name": "History of the Holiday",
+            "questions": {
+                "200": {
+                    "question": "This U.S. president issued the 1863 proclamation that made Thanksgiving a national annual holiday.",
+                    "answer": "Who is Abraham Lincoln?"
+                },
+                "400": {
+                    "question": "Thanksgiving occurs on this specific day.",
+                    "answer": "What is the fourth Thursday in November?"
+                },
+                "600": {
+                    "question": "This president set the date for the modern Thanksgiving holiday.",
+                    "answer": "Who is Franklin Delano Roosevelt?"
+                },
+                "800": {
+                    "question": "This early 17th-century English religious group’s strict observances influenced the evolution of New England Thanksgiving traditions.",
+                    "answer": "Who are the Puritans?"
+                },
+                "1000": {
+                    "question": "The woman known as the “Mother of Thanksgiving” petitioned presidents for decades to make the holiday official.",
+                    "answer": "Who is Sarah Josepha Hale?"
+                }
+            }
+        },
+        {
+            "name": "Misc.",
+            "questions": {
+                "200": {
+                    "question": "This iconic department store sponsors the most-watched Thanksgiving parade in the United States.",
+                    "answer": "What is Macy’s?"
+                },
+                "400": {
+                    "question": "This Native American interpreter and guide taught the Pilgrims crucial survival skills.",
+                    "answer": "Who is Squanto?"
+                },
+                "600": {
+                    "question": "This football team has played a home game on Thanksgiving every year since 1924 (except wartime).",
+                    "answer": "Who are the Detroit Lions?"
+                },
+                "800": {
+                    "question": "There were this many people on the Mayflower",
+                    "answer": "What is 102?"
+                },
+                "1000": {
+                    "question": "This is an approximate percentage of how many pilgrims died before the first Thanksgiving",
+                    "answer": "What is 50%?"
+                }
+            }
+        }
+    ],
+    "finalJeopardy": {
+        "question": "Squanto taught the Pilgrims how to grow this New World plant, which became essential to their survival and part of the 1621 celebration.",
+        "answer": "What is corn?"
+    }
+}

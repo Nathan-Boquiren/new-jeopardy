@@ -1,0 +1,134 @@
+{
+    "mainCategories": [
+        {
+            "name": "Cartoon Chaos",
+            "questions": {
+                "200": {
+                    "question": "This blue cat and mouse duo starred in a classic Hanna-Barbera series.",
+                    "answer": "Who are Tom and Jerry?"
+                },
+                "400": {
+                    "question": "This Disney duck is known for his sailor jacket and hot temper.",
+                    "answer": "Who is Donald Duck?"
+                },
+                "600": {
+                    "question": "This Disney princess loses her glass slipper at a royal ball.",
+                    "answer": "Who is Cinderella?"
+                },
+                
+                "800": {
+                    "question": "This Disney film features a young lion named Simba who must reclaim his throne.",
+                    "answer": "What is The Lion King?"
+                },
+                "1000": {
+                    "question": "This Looney Tunes character is a fast-running bird always outsmarting Wile E. Coyote.",
+                    "answer": "Who is the Road Runner?"
+                }
+            }
+        },
+        {
+            "name": "Mythical Creatures",
+            "questions": {
+                "200": {
+                    "question": "This fire-breathing creature is often depicted as a large, winged reptile.",
+                    "answer": "What is a dragon?"
+                },
+                "400": {
+                    "question": "This winged horse is a symbol of wisdom and fame in Greek mythology.",
+                    "answer": "What is Pegasus?"
+                },
+                "600": {
+                    "question": "This Egyptian creature with a human body and lion’s head guards the pyramids.",
+                    "answer": "What is the Sphinx?"
+                },
+                "800": {
+                    "question": "This half-human, half-horse creature is known for its wild nature in Greek lore.",
+                    "answer": "What is a centaur?"
+                },
+                "1000": {
+                    "question": "This Norse creature is a giant serpent that encircles the world, biting its own tail.",
+                    "answer": "What is Jörmungandr?"
+                }
+            }
+        },
+        {
+            "name": "Space Oddities",
+            "questions": {
+                "200": {
+                    "question": "This planet is known for its prominent ring system.",
+                    "answer": "What is Saturn?"
+                },
+                "400": {
+                    "question": "This bright object, often called a shooting star, burns up in Earth’s atmosphere.",
+                    "answer": "What is a meteor?"
+                },
+                "600": {
+                    "question": "This region beyond Neptune contains small, icy bodies like Pluto.",
+                    "answer": "What is the Kuiper Belt?"
+                },
+                "800": {
+                    "question": "This phenomenon creates colorful sky displays in polar regions.",
+                    "answer": "What is the aurora?"
+                },
+                "1000": {
+                    "question": "This invisible matter, known only by its gravitational pull, shapes galaxies.",
+                    "answer": "What is dark matter?"
+                }
+            }
+        },
+        {
+           "name": "Superhero Secrets",
+           "questions": {
+               "200": {
+                   "question": "This superhero's secret identity is Clark Kent, but his Kryptonian birth name is this.",
+                   "answer": "What is Kal-El?"
+               },
+               "400": {
+                   "question": "Peter Parker works as a photographer for this New York City newspaper.",
+                   "answer": "What is the Daily Bugle?"
+               },
+               "600": {
+                   "question": "This serum transformed Steve Rogers into Captain America.",
+                   "answer": "What is the Super Soldier Serum?"
+               },
+               "800": {
+                   "question": "This criminal is responsible for the murder of Bruce Wayne's parents.",
+                   "answer": "Who is Joe Chill?"
+               },
+               "1000": {
+                   "question": "This indestructible metal coats Wolverine's claws and skeleton.",
+                   "answer": "What is Adamantium?"
+               }
+           }
+        },
+        {
+            "name": "Ancient Wonders",
+            "questions": {
+                "200": {
+                    "question": "This Egyptian structure is the largest pyramid in Giza.",
+                    "answer": "What is the Great Pyramid?"
+                },
+                "400": {
+                    "question": "A massive statue in Olympia, Greece, was dedicated to this king of the gods.",
+                    "answer": "Who is Zeus?"
+                },
+                "600": {
+                    "question": "This wonder, located in Iraq, was known for its terraced gardens.",
+                    "answer": "What are the Hanging Gardens of Babylon?"
+                },
+                "800": {
+                    "question": "This temple in Ephesus honored the Greek goddess of the hunt and childbirth.",
+                    "answer": "What is the Temple of Artemis?"
+                },
+                "1000": {
+                    "question": "This ancient beacon on an Egyptian island guided ships to a key port.",
+                    "answer": "What is the Lighthouse of Alexandria?"
+                }
+            }
+        }
+    ],
+    "finalJeopardy": {
+        "question": "This NASA mission, launched in 1977, was the first to fly by Uranus and Neptune.",
+        "answer": "What is Voyager 2?"
+    }
+}

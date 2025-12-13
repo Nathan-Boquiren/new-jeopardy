@@ -1,0 +1,73 @@
+
+body {
+    background-color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100dvh;
+    padding: 2rem 1rem;
+}
+
+h1 {
+    color: hsl(0 0 100);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    padding: .5rem 1.5rem;
+    border: 3px solid hsl(0 0 100);
+}
+
+.btn-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-outer {
+    --width: clamp(12rem, 50dvw, 20rem);
+    width: 12rem;
+    height: 10rem;
+    border-radius: 50% 50% 50% 50% / 40% 40% 40% 40%;
+    background: linear-gradient(to bottom right, hsl(50 100 40), hsl(50 100 35));
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0 0 3px hsl(50 100 30);
+    transition: .15s ease;
+    isolation: isolate;
+}
+
+.btn-inner {
+    position: absolute;
+    inset-inline: 0;
+    height: 8rem;
+    border-radius: 50%;
+    background: linear-gradient(to bottom right, hsl(50 100 65), hsl(50 100 40));
+    overflow: clip;
+}
+
+.btn-inner::before, .btn-inner::after {
+    content: '';
+    position: absolute;
+    width: 2rem;
+    left: 25%;
+    inset-block: 0;
+    transform: skew(-15deg);
+    background-color: hsl(0 0 100);
+    opacity: .2;
+    transition: .15s ease;
+}
+
+.btn-inner::after {
+    width: 1rem;
+    left: 55%;
+}
+
+.btn-outer:active {
+    height: 8rem;
+    border-radius: 50%;
+    translate: 0 1.5rem;
+}
+
+.btn-outer:active .btn-inner { &::before, &::after { left: 100% } }
