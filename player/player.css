@@ -23,27 +23,24 @@ h1 {
     align-items: center;
     gap: 1rem;
     * { corner-shape: round }
-    
-    .base {
-        --clr: hsl(38 85 23);
-        --darker-clr: hsl(from var(--clr) h s calc(l - 3));
-        position: absolute;
-        position-anchor: --btn;
-        width: calc(12rem + 1.4rem);
-        height: 9rem;
-        position-area: top;
-        translate: 0 calc(100% + 1.7rem);
-        border-radius: 50%;
-        background-color: var(--clr);
-        z-index: -1;
-        border: 2px solid var(--darker-clr);
-        box-shadow: 0 .25rem 0 var(--clr), 0 .5rem 0 var(--clr);
-        transition: .1s ease;
+}
 
-        .btn-container:has(.btn-outer:active) & {
-            translate: 0 calc(100% + 1.2rem);
-        }
-    }
+.base {
+    --clr: hsl(38 85 23);
+    --darker-clr: hsl(from var(--clr) h s calc(l - 3));
+    position: absolute;
+    position-anchor: --btn;
+    width: calc(12rem + 1.4rem);
+    height: 9rem;
+    position-area: top;
+    translate: 0 calc(100% + 1.7rem);
+    border-radius: 50%;
+    background-color: var(--clr);
+    z-index: -1;
+    border: 2px solid var(--darker-clr);
+    box-shadow: 0 .25rem 0 var(--clr), 0 .5rem 0 var(--clr);
+    transition: .1s ease;
+    .btn-container:has(.btn-outer:active) & { translate: 0 calc(100% + 1.2rem) }
 }
 
 .btn-outer {
@@ -74,7 +71,7 @@ h1 {
         background: linear-gradient(to bottom right, hsl(50 100 65), hsl(50 100 40));
         overflow: clip;
         anchor-name: --inner;
-        
+
         &::before, &::after {
             content: '';
             position: absolute;
@@ -112,8 +109,5 @@ h1 {
 }
 
 @keyframes scaleFade {
-    to {
-        width: 200%;
-        opacity: 0;
-    }
+    to { width: 200%; opacity: 0 }
 }

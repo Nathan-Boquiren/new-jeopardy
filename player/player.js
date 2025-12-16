@@ -8,11 +8,6 @@ btn.addEventListener("pointerdown", (e) => {
   playSound();
 });
 
-btn.addEventListener("keypress", (e) => {
-  if (e.key !== "Enter") return;
-  playSound();
-});
-
 function animateRipple(x, y) {
   const ripple = document.createElement("div");
   ripple.className = "ripple";
