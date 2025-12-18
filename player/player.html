@@ -6,18 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="player.css">
-    <script src="player.js" defer></script>
+    <script src="../firebase.js" type="module" defer></script>
+    <script src="player.js" type="module" defer></script>
     <title>Jeopardy! Player</title>
 </head>
 
 <body>
-    <h1>Jeopardy! Player</h1>
-    <div class="btn-container">
-        <div id="btn" class="btn-outer" tabindex="0">
-            <div class="btn-inner"></div>
+    <section id="join-game-page">
+        <h1 class="depth">Join Game!</h1>
+        <form id="join-game-form">
+            <div class="input-container depth">
+                <label for="game-id-input" class="accent-font">Game ID</label>
+                <input type="text" name="game-id" id="game-id-input" autocomplete="off">
+            </div>
+
+            <div class="input-container depth">
+                <label for="name-input" class="accent-font">Name</label>
+                <input type="text" name="name" id="name-input" autocomplete="off">
+            </div>
+
+            <button type="submit" id="join-game-btn" class="pill-btn filled">Join</button>
+        </form>
+
+    </section>
+
+    <section id="main-player-page">
+        <h1 class="depth">Jeopardy! Player</h1>
+        <div class="btn-container">
+            <div id="btn" class="btn-outer" tabindex="0">
+                <div class="btn-inner"></div>
+            </div>
+            <div class="base"></div>
         </div>
-        <div class="base"></div>
-    </div>
+
+        <div id="score-wrapper">0</div>
+    </section>
+
 </body>
 
 </html>

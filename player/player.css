@@ -1,18 +1,60 @@
 body {
     background-color: var(--primary);
+}
+
+#join-game-page, #main-player-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100dvh;
-    padding: 2rem 1rem;
+    padding: 1rem 2rem;
+
+    &:is(#join-game-page):has(.hidden),
+    #join-game-page:not(:has(.hidden)) + &:is(#main-player-page) {
+        display: none;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 1;
+    justify-content: center;
+}
+
+.input-container {
+    padding: 1.5rem;
+    background-color: var(--primary-light);
+    animation: fadeIn .5s ease forwards;
+
+    label {
+        display: block;
+        margin: 0 0 .25rem .25rem;
+        color: var(--accent);
+    }
+
+    input {
+        background-color: transparent;
+        border: 2px solid hsl(0 0 100);
+        border-radius: 1.5rem;
+        font-size: 1.2rem;
+        padding: .5rem;
+        transition: .2s ease;
+
+        &:focus {
+            outline: none;
+            background-color: var(--primary-light);
+        }
+    }
 }
 
 h1 {
     color: hsl(0 0 100);
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-transform: uppercase;
     padding: .5rem 1.5rem;
-    border: 3px solid hsl(0 0 100);
+    background-color: var(--primary-light-2);
 }
 
 .btn-container {
@@ -23,24 +65,6 @@ h1 {
     align-items: center;
     gap: 1rem;
     * { corner-shape: round }
-}
-
-.base {
-    --clr: hsl(38 85 23);
-    --darker-clr: hsl(from var(--clr) h s calc(l - 3));
-    position: absolute;
-    position-anchor: --btn;
-    width: calc(12rem + 1.4rem);
-    height: 9rem;
-    position-area: top;
-    translate: 0 calc(100% + 1.7rem);
-    border-radius: 50%;
-    background-color: var(--clr);
-    z-index: -1;
-    border: 2px solid var(--darker-clr);
-    box-shadow: 0 .25rem 0 var(--clr), 0 .5rem 0 var(--clr);
-    transition: .1s ease;
-    .btn-container:has(.btn-outer:active) & { translate: 0 calc(100% + 1.2rem) }
 }
 
 .btn-outer {
@@ -106,8 +130,25 @@ h1 {
             animation: scaleFade .5s ease forwards;
         }
     }
+
+    & + .base {
+        --clr: hsl(38 85 23);
+        --darker-clr: hsl(from var(--clr) h s calc(l - 3));
+        position: absolute;
+        position-anchor: --btn;
+        width: calc(12rem + 1.4rem);
+        height: 9rem;
+        position-area: top;
+        translate: 0 calc(100% + 1.7rem);
+        border-radius: 50%;
+        background-color: var(--clr);
+        z-index: -1;
+        border: 2px solid var(--darker-clr);
+        box-shadow: 0 .25rem 0 var(--clr), 0 .5rem 0 var(--clr);
+        transition: .1s ease;
+        .btn-container:has(.btn-outer:active) & { translate: 0 calc(100% + 1.2rem) }
+    }
 }
 
-@keyframes scaleFade {
-    to { width: 200%; opacity: 0 }
-}
+@keyframes fadeIn { from { translate: 0 -1rem; opacity: 0 } }
+@keyframes scaleFade { to { width: 200%; opacity: 0 } }

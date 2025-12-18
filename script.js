@@ -1,5 +1,7 @@
 let cl = console.log;
 
+import { updateScoreInBackend } from "./host.js";
+
 // ========== DOM Elements ==========
 const addPlayerBtn = document.getElementById("add-player-btn");
 const formModal = document.getElementById("form-modal");
@@ -68,8 +70,8 @@ class Game {
       .catch((error) => console.error("JSON fetch error:", error));
   }
 
-  addPlayer(name) {
-    const player = new Player(name);
+  addPlayer(name, uid) {
+    const player = new Player(name, uid);
     this.players.push(player);
     player.renderNameTag(document.getElementById("name-list"));
   }
@@ -112,8 +114,9 @@ class Game {
 }
 
 class Player {
-  constructor(name) {
+  constructor(name, uid) {
     this.name = name;
+    this.uid = uid;
     this.score = 0;
     this.el = this.renderElement();
     this.scoreWrapper = this.el.querySelector(".player-score");
@@ -163,6 +166,8 @@ class Player {
     this.score += points;
     this.scoreWrapper.innerText = this.score;
     game.updateWinners();
+
+    updateScoreInBackend(this.uid, this.score);
   }
 
   addFinalScoreBtns() {
@@ -373,3 +378,5 @@ function createElement(tag, classes = [], text = "") {
   if (text) element.innerText = text;
   return element;
 }
+
+export { game };
