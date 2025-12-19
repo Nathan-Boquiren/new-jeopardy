@@ -1,6 +1,6 @@
 let cl = console.log;
 
-import { updateScoreInBackend } from "./host.js";
+import { updateScoreInBackend, listenToBuzzes, setQuestionActiveState } from "./host.js";
 
 // ========== DOM Elements ==========
 const addPlayerBtn = document.getElementById("add-player-btn");
@@ -50,6 +50,9 @@ class Game {
     document.getElementById("start-page").classList.add("hidden");
     this.renderBoard();
     cl("Game initialized successfully");
+
+    // listen for player buzz-ins in backend database
+    listenToBuzzes();
   }
 
   renderBoard() {
@@ -263,7 +266,12 @@ class JeopardyItem {
     popUp.querySelector("#question-txt").innerHTML = question;
     popUp.querySelector("#answer-txt").innerHTML = answer;
 
-    startCountdown(30);
+    //
+    // Set Question Active State in backend
+    setQuestionActiveState(true);
+    //
+    //
+    // startCountdown(30);
   }
 }
 
@@ -323,6 +331,13 @@ showAnswerBtn.addEventListener("click", () => popUp.classList.add("show-answer")
 
 returnBtn.addEventListener("click", () => {
   popUp.className = "";
+
+  //
+  // Set Question Active State in backend
+  setQuestionActiveState(false);
+  //
+  //
+
   // game.advancePlayer();
 });
 
@@ -379,4 +394,4 @@ function createElement(tag, classes = [], text = "") {
   return element;
 }
 
-export { game };
+export { game, startCountdown };
