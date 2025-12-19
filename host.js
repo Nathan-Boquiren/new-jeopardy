@@ -53,9 +53,8 @@ function createGame(host) {
   onValue(playersRef, (snapshot) => {
     const players = snapshot.val();
     if (!players) return;
-
     const uids = Object.keys(players);
-    const latestPlayerUid = uids[uids.length - 1];
+    const latestPlayerUid = uids[0];
     const latestPlayerName = players[latestPlayerUid].name;
     game.addPlayer(latestPlayerName, latestPlayerUid);
   });
