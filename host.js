@@ -1,6 +1,6 @@
 const cl = console.log;
 
-import { onDisconnect, auth, onAuthStateChanged, db, ref, set, onValue } from "./firebase.js";
+import { onDisconnect, auth, onAuthStateChanged, db, ref, set, onValue, get, child } from "./firebase.js";
 import { game, startCountdown } from "./script.js";
 
 // DOM Elements
@@ -75,29 +75,35 @@ function updateScoreInBackend(playerUid, newScore) {
 
 function listenToBuzzes() {
   const buzzesRef = ref(db, `games/${gameCode}/buzzes`);
+
   onValue(buzzesRef, (ss) => {
-    const playerBuzzIns = ss.val();
-    const buzzInWinner = getEarliestBuzz(playerBuzzIns);
+    const buzzIns = ss.val();
+    if (!buzzIns) return;
+
+    const earliestPlayerId = getEarliestPlayerId(buzzIns);
+    if (!earliestPlayerId) return;
+
+    const winnerPlayer = game.players.find((p) => p.uid === earliestPlayerId);
+    if (!winnerPlayer) return;
+
+    cl(`First buzz: ${winnerPlayer.name} (${earliestPlayerId})`);
+    // displayBuzzWinner(winnerPlayer.name);
     startCountdown(30);
   });
 }
 
-function getEarliestBuzz(buzzIns) {
-  const buzzIns = buzzesSnapshot.val();
-  if (!buzzIns) return null;
-
-  let earliest = null;
+function getEarliestPlayerId(buzzIns) {
   let earliestTimestamp = Infinity;
-
+  let earliestPlayerId = null;
   Object.keys(buzzIns).forEach((playerId) => {
     const buzz = buzzIns[playerId];
     if (buzz.timestamp < earliestTimestamp) {
       earliestTimestamp = buzz.timestamp;
-      earliest = { playerId, timestamp: buzz.timestamp };
+      earliestPlayerId = playerId;
     }
   });
 
-  return earliest;
+  return earliestPlayerId;
 }
 
 function setQuestionActiveState(state) {
