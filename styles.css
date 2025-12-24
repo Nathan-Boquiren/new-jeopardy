@@ -41,4 +41,8 @@ a {
     width: 20rem;
     bottom: 2rem;
     right: 2rem;
+
+    @media(max-width: 700px) {
+        display: none;
+    }
 }
