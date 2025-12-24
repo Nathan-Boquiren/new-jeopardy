@@ -1,0 +1,159 @@
+{
+    "topicName": "Mery Christmas!",
+    "mainCategories": [
+        {
+            "name": "The Nativity",
+            "questions": {
+                "200": {
+                    "question": "The town where Jesus was born.",
+                    "answer": "What is Bethlehem?"
+                },
+                "400": {
+                    "question": "It was said that the shepherds would \"find the babe _____.\"",
+                    "answer": "What is \"wrapped in swaddling clothes, lying in a manger\"?"
+                },
+                "600": {
+                    "question": "He issued the censor that led to Joseph and Mary traveling to Bethlehem.",
+                    "answer": "Who is Caesar Augustus?"
+                },
+                "800": {
+                    "question": "This was Joseph's occupation.",
+                    "answer": "What is a carpenter?"
+                },
+                "1000": {
+                    "question": "These are the gifts that the Magi brought.",
+                    "answer": "What are gold, frankincense, and myrrh? <img src='https://i.redd.it/1gz2zjtwkkoc1.gif'>"
+                }
+            }
+        },
+        {
+            "name": "Santa Claus Lore",
+            "questions": {
+                "200": {
+                    "question": "Santa Claus famously says this.",
+                    "answer": "What is \"Ho Ho Ho?\""
+                },
+                "400": {
+                    "question": "While the modern figure is a blend of multiple figures, Santa Claus was mainly inspired by this person.",
+                    "answer": "Who is Saint Nicholas?"
+                },
+                "600": {
+                    "question": "People who say \"bo'oh'o'wa'er\" also refer to Santa Claus as this.",
+                    "answer": "What is Father Christmas?"
+                },
+                "800": {
+                    "question": "This company popularized Santa Claus in its advertisements.",
+                    "answer": "What is Coca-Cola? <img src='https://www.coca-cola.com/content/dam/onexp/gb/en/article-body/coca-cola-santa-history-article-lead-desktop-1020x420.jpg'>"
+                },
+                "1000": {
+                    "question": "This gift-giving Norse god rode on an eight-legged steed during the Yule festival, and influenced aspects of Santa Claus.",
+                    "answer": "Who is Odin?"
+                }
+            }
+        },
+        {
+            "name": "Xmas Tree Lore",
+            "questions": {
+                "200": {
+                    "question": "Other than a star, this is the most popular item to put atop a Christmas tree.",
+                    "answer": "What is an angel?"
+                },
+                "400": {
+                    "question": "Usually, this kind of tree is chosen to be a Christmas tree.",
+                    "answer": "What is a fir tree? <img src='https://www.thespruce.com/thmb/Angl1uG6W37TpbmzCQkKJLqz09c=/4272x2848/filters:no_upscale():max_bytes(150000):strip_icc()/Silverfir-Abies_alba_Wei_Tanne_1-cb192868834d4cfc9c627250d2c8ddbd.jpeg'>"
+                },
+                "600": {
+                    "question": "The modern Christmas tree tradition began in this country, where Christians brought decorated trees into their homes.",
+                    "answer": "What is Germany?"
+                },
+                "800": {
+                    "question": "Approximately this many real Christmas trees are sold annually in the U.S.",
+                    "answer": "What is 25-30 million?"
+                },
+                "1000": {
+                    "question": "According to legend, this 8th-century missionary cut down a sacred oak and pointed to an evergreen tree as a symbol of Christ, dedicating it to the Lord.",
+                    "answer": "Who is Saint Boniface?"
+                }
+            }
+        },
+        {
+            "name": "Xmas Music",
+            "questions": {
+                "200": {
+                    "question": "This popular tune, with bells and sleighs, was originally written for Thanksgiving.",
+                    "answer": "What is Jingle Bells?"
+                },
+                "400": {
+                    "question": "This is what my true love gives to me on the Third day of Christmas.",
+                    "answer": "What is three French hens?"
+                },
+                "600": {
+                    "question": "\"Greensleeves\" is another name for this Christmas song.",
+                    "answer": "What is 'What Child Is This?'?"
+                },
+                "800": {
+                    "question": "According to \"The Christmas Song\", folks are dressed up like this.",
+                    "answer": "What is eskimos?"
+                },
+                "1000": {
+                    "question": "This Jewish songwriter wrote both \"White Christmas\" and \"God Bless America.\"",
+                    "answer": "Who is Irving Berlin? <img src='https://static.timesofisrael.com/www/uploads/2019/12/AP_4207161110-e1577104086911-1024x640.jpg'>"
+                }
+            }
+        },
+        {
+            "name": "Xmas Movies",
+            "questions": {
+                "200": {
+                    "question": "He stole Christmas.",
+                    "answer": "Who is the Grinch? <img src='https://www.themoviedb.org/t/p/original/tv8h013b8P7z6hbIKw88BkTcVmP.jpg'>"
+                },
+                "400": {
+                    "question": "He said, \"God bless us, everyone.\"",
+                    "answer": "Who is Tiny Tim? <img src='https://vignette.wikia.nocookie.net/christmasspecials/images/7/7a/Morty-TinyTim.jpg/revision/latest?cb=20151020034151'>"
+                },
+                "600": {
+                    "question": "He was Ebeneezer Scrooge's late business partner.",
+                    "answer": "Who is Jacob Marley? <img src='https://farm5.staticflickr.com/4861/45720146204_ac034b52c5_o.png'>"
+                },
+                "800": {
+                    "question": "Left behind on the family trip, he had to defend his home from burglars.",
+                    "answer": "Who is Kevin McCallister? <img src='https://static3.srcdn.com/wordpress/wp-content/uploads/2019/11/Kevin-McCallister-FeaturedSocial-Media-Image-Cropped.jpg'>"
+                },
+                "1000": {
+                    "question": "According to Elf, this is the best way to spread Christmas cheer.",
+                    "answer": "What is singing loud for all to hear? <img src='https://s1.ticketm.net/dam/a/d9c/43dc8d69-cfe5-4ac1-bfe0-fc207e921d9c_1816311_TABLET_LANDSCAPE_LARGE_16_9.jpg'>"
+                }
+            }
+        },
+        {
+            "name": "Misc.",
+            "questions": {
+                "200": {
+                    "question": "The Grinch is as cuddly as a ______.",
+                    "answer": "What is a cactus?"
+                },
+                "400": {
+                    "question": "There are 365 days in a year. Christmas Day falls on this number.",
+                    "answer": "What is 359?"
+                },
+                "600": {
+                    "question": "The three reindeer whose names begin with 'D'.",
+                    "answer": "Who are Dasher, Donner, and Dancer?"
+                },
+                "800": {
+                    "question": "Mariah Carey makes approximately this much money in annual royalties from her hit song \"All I Want for Christmas Is You\"",
+                    "answer": "What is $2.5 Million - $3 Million?"
+                },
+                "1000": {
+                    "question": "Before becoming a popular holiday treat, candy canes were mainly given to children in this setting and for this purpose.",
+                    "answer": "What is church, to keep children quiet during services?"
+                }
+            }
+        }
+    ],
+    "finalJeopardy": {
+        "question": "These are the English words for the Spanish lyrics \"Feliz Navidad, próspero año y felicidad.\"",
+        "answer": "What is \"Merry Christmas, a prosperous New Year, and happiness\"?"
+    }
+}

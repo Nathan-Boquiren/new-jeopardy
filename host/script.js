@@ -26,7 +26,7 @@ const endPageHeader = document.getElementById("winner-header");
 const jeopardyTheme = new Audio("../assets/sfx/final-jeopardy-theme.mp3");
 
 // =============== CHANGE ACCORDING TO EVENT ================
-const categoryPath = "../questions/thanksgiving-questions.json";
+const categoryPath = "../questions/christmas-questions.json";
 // ==========================================================
 
 // ========== Classes ==========
