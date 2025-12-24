@@ -112,6 +112,8 @@ function listenToBuzzes() {
   });
 }
 
+cl(game);
+
 function setFinalJeopardyState(state) {
   cl("Final Jeopardy");
   const finalJeopardyRef = ref(db, `games/${gameCode}/finalJeopardy`);
@@ -126,15 +128,10 @@ function setFinalJeopardyState(state) {
     const allHaveWager = Object.values(players).every((player) => player.finalJeopardy && "wager" in player.finalJeopardy);
     cl("all have wager: " + allHaveWager);
 
-    // ========== WORK ON THIS ==========
-    // ========== WORK ON THIS ==========
-    // ========== WORK ON THIS ==========
-    if (allHaveWager && game.finalJeopardy) game.finalJeopardy.showQuestion();
-    // ========== WORK ON THIS ==========
-    // ========== WORK ON THIS ==========
-    // ========== WORK ON THIS ==========
-    // ========== WORK ON THIS ==========
-    // ========== WORK ON THIS ==========
+    if (allHaveWager) {
+      setWagerAmounts(players);
+      game.questions.finalJeopardy.showQuestion();
+    }
   });
 }
 
@@ -165,4 +162,19 @@ function resetBuzzIns() {
   set(buzzInWinnerRef, null);
 }
 
-export { updateScoreInBackend, listenToBuzzes, setQuestionActiveState, setFinalJeopardyState };
+function setWagerAmounts(players) {
+  Object.keys(players).forEach((uid) => {
+    const fj = players[uid]?.finalJeopardy;
+    if (!fj || !("wager" in fj)) return;
+
+    const player = game.players.find((p) => p.uid === uid);
+    if (player) player.wagerAmount = fj.wager;
+  });
+}
+
+function finalizeScore(uid) {
+  const playerFinalRef = ref(db, `games/${gameCode}/players/${uid}/finalize`);
+  set(playerFinalRef, true);
+}
+
+export { updateScoreInBackend, listenToBuzzes, setQuestionActiveState, setFinalJeopardyState, finalizeScore };

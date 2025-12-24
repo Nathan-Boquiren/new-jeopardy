@@ -123,7 +123,8 @@ function controlFinalJeopardy(state) {
     const score = scoreWrappers[0].innerText;
     wagerInput.setAttribute("max", score);
   } else {
-    finalJeopardyPage.classList.add("closed-answer");
+    cl("Final jeopardy closed");
+    closeFinalJeopardy();
   }
 }
 
@@ -139,9 +140,19 @@ wagerForm.addEventListener("submit", (e) => {
 finalAnswerForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const answer = finalInput.value;
-
   setFinalJeopardyBackendData("answer", answer);
+  closeFinalJeopardy();
 });
+
+function closeFinalJeopardy() {
+  finalJeopardyPage.classList.add("closed-answer");
+  const playerFinalRef = ref(db, `games/${gameCode}/players/${playerId}/finalize`);
+  onValue(playerFinalRef, (ss) => {
+    const state = ss.val();
+    const finalScorePage = document.getElementById("final-score-page");
+    if (state) finalScorePage.classList.add("show");
+  });
+}
 
 // final jeopardy backend stuff
 

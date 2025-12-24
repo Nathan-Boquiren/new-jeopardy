@@ -3,7 +3,7 @@ body {
     height: 100dvh;
 }
 
-#join-game-page, #main-player-page, #final-jeopardy-page {
+#join-game-page, #main-player-page, #final-jeopardy-page, #final-score-page {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -13,7 +13,9 @@ body {
     &:is(#join-game-page.hidden),
     #join-game-page:not(.hidden) + &:is(#main-player-page),
     &:is(#final-jeopardy-page):not(.show),
-    &:has(+ #final-jeopardy-page.show) {
+    &:has(+ #final-jeopardy-page.show),
+    &:is(#final-score-page):not(.show),
+    &:has(+ #final-score-page.show) {
         display: none;
     }
 }
@@ -217,7 +219,8 @@ body {
 @keyframes scaleFade { to { width: 200%; opacity: 0 } }
 
 #final-jeopardy-page {
-    #wager-amount-form:not(.hidden) + #final-answer-form {
+    #wager-amount-form:not(.hidden) + #final-answer-form,
+    &.closed-answer #final-answer-form  {
         display: none;
     }
     
@@ -305,6 +308,40 @@ body {
     }
 }
 
+.answer-submitted-msg {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 1rem;
+    opacity: 1;
+    overflow: hidden;
+    transition: .2s ease;
+    transition-behavior: allow-discrete;
+    animation: breathe 1s ease-in-out alternate infinite;
+    
+    h2 {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    .closed-answer > & {
+        display: flex;
+        flex: 1;
+        padding: 1rem;
+
+        @starting-style {
+            flex: 0;
+            padding: 0;
+            opacity: 0;
+        }
+    }
+}
+
+@keyframes breathe {
+    to {  scale: 1.05; }
+}
+
 input[type=number] {
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
@@ -316,3 +353,10 @@ input[type=number] {
     appearance: textfield;
 }
 
+
+/* Final score */
+#final-score-page {
+    height: 100%;
+    justify-content: center;
+    gap: 1rem;
+}

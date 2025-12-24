@@ -1,6 +1,6 @@
 let cl = console.log;
 
-import { updateScoreInBackend, listenToBuzzes, setQuestionActiveState, setFinalJeopardyState } from "./host.js";
+import { updateScoreInBackend, listenToBuzzes, setQuestionActiveState, setFinalJeopardyState, finalizeScore } from "./host.js";
 
 // ========== DOM Elements ==========
 // const addPlayerBtn = document.getElementById("add-player-btn");
@@ -22,6 +22,8 @@ const timeMsg = document.getElementById("time-msg");
 const finalJeopardyBtn = document.getElementById("final-jeopardy-btn");
 const winnerContainer = document.getElementById("winner-container");
 const endPageHeader = document.getElementById("winner-header");
+
+const jeopardyTheme = new Audio("../assets/sfx/final-jeopardy-theme.mp3");
 
 // =============== CHANGE ACCORDING TO EVENT ================
 const categoryPath = "../questions/thanksgiving-questions.json";
@@ -95,7 +97,7 @@ class Game {
 
     if (!winners.length) {
       endPageHeader.textContent = "There are no winners. Y'all are a bunch of";
-      winnerContainer.innerHTML = '<img src="dum-dums.jpg">';
+      winnerContainer.innerHTML = '<img src="../assets/imgs/dum-dums.jpg">';
     } else {
       const isTie = winners.length > 1;
       endPageHeader.textContent = `The Winner${isTie ? "s are" : " is"}:`;
@@ -171,7 +173,6 @@ class Player {
     this.score += points;
     this.scoreWrapper.innerText = this.score;
     game.updateWinners();
-
     updateScoreInBackend(this.uid, this.score);
   }
 
@@ -179,8 +180,13 @@ class Player {
     this.scoreWrapper.classList.add("disabled");
 
     const btnsContainer = createElement("div", "final-answer-status");
-    const answerRightBtn = createElement("span", ["material-symbols-rounded", "answer-right"], "check_circle");
-    const answerWrongBtn = createElement("span", ["material-symbols-rounded", "answer-wrong"], "cancel");
+    const answerRightBtn = createElement("span", "answer-right");
+    answerRightBtn.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m424-408-86-86q-11-11-28-11t-28 11q-11 11-11 28t11 28l114 114q12 12 28 12t28-12l226-226q11-11 11-28t-11-28q-11-11-28-11t-28 11L424-408Zm56 328q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>';
+
+    const answerWrongBtn = createElement("span", "answer-wrong");
+    answerWrongBtn.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m480-424 116 116q11 11 28 11t28-11q11-11 11-28t-11-28L536-480l116-116q11-11 11-28t-11-28q-11-11-28-11t-28 11L480-536 364-652q-11-11-28-11t-28 11q-11 11-11 28t11 28l116 116-116 116q-11 11-11 28t11 28q11 11 28 11t28-11l116-116Zm0 344q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>';
 
     const btns = [answerRightBtn, answerWrongBtn];
     btnsContainer.append(answerRightBtn, answerWrongBtn);
@@ -195,8 +201,11 @@ class Player {
   }
 
   finalizeScore(answeredRight = false) {
-    this.score *= answeredRight ? 2 : 0;
+    this.wagerAmount = Number(this.wagerAmount);
+    this.score += answeredRight ? this.wagerAmount : -this.wagerAmount;
     this.scoreWrapper.innerText = this.score;
+    updateScoreInBackend(this.uid, this.score);
+    finalizeScore(this.uid);
     this.el.querySelector(".final-answer-status").remove();
   }
 
@@ -256,6 +265,8 @@ class JeopardyItem {
     popUp.classList.add("show-question");
     popUp.querySelector(".price").innerText = this.price;
 
+    timerBar.style.width = "100%";
+
     game.currentPrice = this.price;
 
     const category = game.questions.mainCategories.find((cat) => cat.name === this.categoryName);
@@ -268,12 +279,8 @@ class JeopardyItem {
     popUp.querySelector("#question-txt").innerHTML = question;
     popUp.querySelector("#answer-txt").innerHTML = answer;
 
-    //
     // Set Question Active State in backend
     setQuestionActiveState(true);
-    //
-    //
-    // startCountdown(30);
   }
 }
 
@@ -282,10 +289,12 @@ class FinalJeopardy {
     this.categoryName = "Final Jeopardy";
     this.question = question;
     this.answer = answer;
+    this.audio = document.getElementById("jeopardy-theme");
   }
 
   showWager() {
     popUp.classList.add("show-wager");
+    timerBar.style.width = "100%";
     // Enable final jeopardy mode in backend
     setFinalJeopardyState(true);
   }
@@ -293,7 +302,6 @@ class FinalJeopardy {
   showQuestion() {
     this.enableFinalJeopardyControl();
 
-    // popUp.classList.add("show-question");
     popUp.classList.replace("show-wager", "show-question");
 
     popUp.querySelector(".price").innerText = "D.O.N.";
@@ -304,21 +312,24 @@ class FinalJeopardy {
     popUp.querySelector("#question-txt").innerHTML = this.question;
     popUp.querySelector("#answer-txt").innerHTML = this.answer;
 
-    // startCountdown(60);
     game.players.forEach((p) => p.addFinalScoreBtns());
   }
 
   enableFinalJeopardyControl() {
-    const audio = new Audio("../assets/sfx/final-jeopardy-theme.mp3");
-    document.addEventListener("keydown", async (e) => {
+    const handler = async (e) => {
       if (e.key === " ") {
-        audio.paused ? audio.play() : audio.pause();
-        startCountdown(90);
-        await delay(90000);
-        cl("Times UP!!!!!!");
-        setFinalJeopardyState(false);
+        e.preventDefault();
+        if (this.audio.paused) {
+          this.audio.play();
+          startCountdown(90);
+          await delay(90000);
+          setFinalJeopardyState(false);
+        }
+      } else if (e.key === "p") {
+        this.audio.paused ? this.audio.play() : this.audio.pause();
       }
-    });
+    };
+    document.addEventListener("keydown", handler);
   }
 }
 
@@ -352,14 +363,15 @@ function populateCategories(categories) {
   categories.forEach((category) => categoriesContainer.append(category.el));
 }
 
-showAnswerBtn.addEventListener("click", () => popUp.classList.add("show-answer"));
+showAnswerBtn.addEventListener("click", () => {
+  popUp.classList.add("show-answer");
+  game.questions.finalJeopardy.audio.pause();
+});
 
 returnBtn.addEventListener("click", () => {
   popUp.className = "";
   setQuestionActiveState(false);
-  document.querySelector(".buzz-winner-wrapper").remove();
-
-  // game.advancePlayer();
+  if (document.querySelector(".buzz-winner-wrapper")) document.querySelector(".buzz-winner-wrapper").remove();
 });
 
 // ===== Display Player Buzz in Winner =====
@@ -378,7 +390,6 @@ function renderPlayers() {
 
 // ===== TIMER =====
 function startCountdown(duration) {
-  timerBar.style.width = "100%";
   const start = performance.now();
 
   function update(now) {

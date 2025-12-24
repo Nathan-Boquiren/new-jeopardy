@@ -439,29 +439,31 @@ aside {
         li { cursor: pointer }
     }
     
-    &:has(.final-answer-status) > *:not(.final-answer-status) {filter: blur(5px)}
+    &:has(.final-answer-status) > *:not(.final-answer-status) {filter: blur(5px) brightness(.5);}
 
     .final-answer-status {
         position: absolute;
         inset: -.3rem -.5rem;
-        background-color: hsl(0 0 0 / .4);
-        backdrop-filter: blur(10px);
-        border-radius: 1rem;
-        border: 2px solid hsl(0 0 100 / .3);
+        border-radius: 3rem;
         display: flex;
+        justify-content: space-evenly;
         align-items: center;
-        justify-content: center;
-        gap: 1rem;
         transition: all 0.2s ease;
 
         > * {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 600;
             cursor: pointer;
             border-radius: 50%;
-            border: 2px solid var(--color);
+            corner-shape: round;
+            height: fit-content;
+            aspect-ratio: 1;
             background-color: var(--color);
             transition: all 0.2s ease;
+
+            > svg {
+                height: 40px;
+                width: 40px;
+            }
+            
             &:is(.answer-right) {--color: #32cd32}
             &:is(.answer-wrong) {--color: #ff0000}
         }
@@ -480,6 +482,7 @@ aside {
 #question-answer {
     position: absolute;
     inset: 0;
+    overflow: clip;
     background-color: var(--primary);
     display: none;
     padding: 3rem;
@@ -534,6 +537,8 @@ aside {
     }
 
     .buzz-winner-wrapper {
+        position: absolute;
+        bottom: 3rem;
         font-family: var(--accent-font);
         background-color: var(--primary-light);
         font-weight: 400;
@@ -606,10 +611,7 @@ aside {
         text-wrap: balance;
         animation: breathe 2s ease-in-out alternate infinite;
     }
-    #question-answer.show-wager & {
-        display: flex;
-        
-    }
+    #question-answer.show-wager & { display: flex }
 }
 
 @keyframes breathe {
@@ -632,10 +634,6 @@ aside {
         border-radius: inherit;
         width: 100%;
         transition: all 0.5s linear;
-
-        #question-answer:not(:has(.buzz-winner-wrapper)) & {
-            width: 100% !important;
-        }
     }
 }
 
