@@ -16,7 +16,7 @@ body {
 }
 
 .jeopardy-logo {
-    width: min(80%, 30rem);
+    width: max(300px, 50vw);
 }
 
 a {
@@ -34,4 +34,11 @@ a {
         transform: translateY(5px) scale(.98);
         background-color: var(--primary-light);
     }
+}
+
+.qr-code {
+    position: absolute;
+    width: 20rem;
+    bottom: 2rem;
+    right: 2rem;
 }

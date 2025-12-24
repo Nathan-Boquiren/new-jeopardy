@@ -134,6 +134,11 @@ body {
             .btn-inner { &::before, &::after { left: 100% } }
         }
 
+        &:not(.can-buzz) {
+            filter: grayscale(100%);
+            pointer-events: none;
+        }
+
         .btn-inner {
             position: absolute;
             z-index: 0;
@@ -195,9 +200,10 @@ body {
             box-shadow: 0 .25rem 0 var(--clr), 0 .5rem 0 var(--clr);
             transition: .1s ease;
             .btn-container:has(.btn-outer:active) & { translate: 0 calc(100% + 1.2rem) }
+
+            :not(.can-buzz) + & { filter: grayscale(100%) }
         }
     }
-
 }
 
 .score-wrapper {

@@ -53,6 +53,7 @@ function createPlayerInDB({ code, playerId, name }) {
     onValue(ref(db, `games/${gameCode}/questionActive`), (ss) => {
       const state = ss.val();
       playerCanBuzzIn = state;
+      btn.classList.toggle("can-buzz", playerCanBuzzIn);
     });
 
     // On final jeopardy state change
