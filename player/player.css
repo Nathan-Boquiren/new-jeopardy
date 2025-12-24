@@ -1,154 +1,318 @@
 body {
     background-color: var(--primary);
+    height: 100dvh;
 }
 
-#join-game-page, #main-player-page {
+#join-game-page, #main-player-page, #final-jeopardy-page {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100dvh;
-    padding: 1rem 2rem;
+    padding: 2rem;
 
-    &:is(#join-game-page):has(.hidden),
-    #join-game-page:not(:has(.hidden)) + &:is(#main-player-page) {
+    &:is(#join-game-page.hidden),
+    #join-game-page:not(.hidden) + &:is(#main-player-page),
+    &:is(#final-jeopardy-page):not(.show),
+    &:has(+ #final-jeopardy-page.show) {
         display: none;
     }
 }
 
-form {
+#join-game-page {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    flex: 1;
     justify-content: center;
-}
+    > * { width: min(100%, 20rem) }
 
-.input-container {
-    padding: 1.5rem;
-    background-color: var(--primary-light);
-    animation: fadeIn .5s ease forwards;
-
-    label {
-        display: block;
-        margin: 0 0 .25rem .25rem;
-        color: var(--accent);
+    > *:not(.jeopardy-logo) {
+        animation: fadeIn .5s ease forwards;
     }
 
-    input {
-        background-color: transparent;
-        border: 2px solid hsl(0 0 100);
-        border-radius: 1.5rem;
-        font-size: 1.2rem;
-        padding: .5rem;
-        transition: .2s ease;
-
-        &:focus {
-            outline: none;
-            background-color: var(--primary-light);
-        }
+    .jeopardy-logo {
+        padding-inline: 2rem;
+        object-fit: contain;
+        object-position: 0 0;
+        margin-bottom: auto;
     }
-}
 
-h1 {
-    color: hsl(0 0 100);
-    font-size: 2rem;
-    text-transform: uppercase;
-    padding: .5rem 1.5rem;
-    background-color: var(--primary-light-2);
-}
-
-.btn-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    * { corner-shape: round }
-}
-
-.btn-outer {
-    width: 12rem;
-    height: 10rem;
-    border-radius: 50% 50% 50% 50% / 40% 40% 40% 40%;
-    background: linear-gradient(to bottom right, hsl(50 100 40), hsl(50 100 35));
-    cursor: pointer;
-    position: relative;
-    box-shadow: 0 0 0 3px hsl(50 100 30);
-    z-index: 0;
-    transition: .1s ease;
-    anchor-name: --btn;
-
-    &:active {
-        height: 8rem;
-        border-radius: 50%;
-        translate: 0 1.5rem;
-        .btn-inner { &::before, &::after { left: 100% } }
+    .instruction {
+        font-family: var(--san-serif);
+        text-align: center;
+        text-wrap: balance;
+        color: hsl(0 0 100 / .65);
+        font-size: .8rem;
     }
-    
-    .btn-inner {
-        position: absolute;
-        z-index: 0;
-        inset-inline: 0;
-        height: 8rem;
-        border-radius: 50%;
-        background: linear-gradient(to bottom right, hsl(50 100 65), hsl(50 100 40));
-        overflow: clip;
-        anchor-name: --inner;
 
-        &::before, &::after {
-            content: '';
+    .input-container {
+        padding: 1.5rem;
+        background-color: var(--primary-light);
+        position: relative;
+        &, > * { transition: .2s ease }
+
+        &:has(input:focus, input:valid) { padding-top: 2rem }
+
+        label {
+            display: block;
+            color: var(--primary-light-3);
+            font-size: 1.5rem;
             position: absolute;
-            width: 2rem;
-            left: 25%;
-            inset-block: 0;
-            transform: skew(-15deg);
-            background-color: hsl(0 0 100);
-            opacity: .2;
-            transition: .1s ease;
-        }
-
-        &::after {
-            width: 1rem;
-            left: 55%;
-        }
-
-        .ripple {
-            --xOff: 0px;
-            --yOff: 0px;
-            position: absolute;
-            position-anchor: --inner;
-            width: 0;
-            aspect-ratio: 1;
-            left: var(--xOff);
-            top: var(--yOff);
+            top: 50%;
+            left: 50%;
             translate: -50% -50%;
+            padding: .4rem;
+            border-radius: .5rem;
+            :is(input:focus, input:valid) + & {
+                top: 0;
+                left: 1.5rem;
+                translate: 0;
+                font-size: .8rem;
+                color: var(--accent);
+            }
+        }
+
+        input {
+            background-color: transparent;
+            border: none;
+            border-radius: 1.5rem;
+            box-shadow:
+                inset 0 1px 2px hsl(0 0 0 / .7),
+                inset 0 -1px 2px hsl(0 0 100 / .2);
+            width: 100%;
+            padding: .5rem;
+            font-size: 1.5rem;
+            text-align: center;
+
+            &:focus {
+                outline: none;
+                background-color: var(--primary-light-2);
+            }
+        }
+
+        #game-id-input { letter-spacing: .5rem }
+    }
+
+    #join-game-btn { margin-top: auto; }
+}
+
+#main-player-page {
+    .player-info {
+        padding: 1rem 2rem;
+        background-color: var(--primary-light-2);
+        width: max(12rem, 50%);
+        text-align: center;
+    }
+
+    .btn-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        * { corner-shape: round }
+    }
+
+    .btn-outer {
+        width: 12rem;
+        height: 10rem;
+        border-radius: 50% 50% 50% 50% / 40% 40% 40% 40%;
+        background: linear-gradient(to bottom right, hsl(50 100 40), hsl(50 100 35));
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 0 0 3px hsl(50 100 30);
+        z-index: 0;
+        transition: .1s ease;
+        anchor-name: --btn;
+
+        &:active {
+            height: 8rem;
             border-radius: 50%;
-            background-color: hsl(0 0 100 / .3);
-            filter: blur(3px);
+            translate: 0 1.5rem;
+            .btn-inner { &::before, &::after { left: 100% } }
+        }
+
+        .btn-inner {
+            position: absolute;
+            z-index: 0;
+            inset-inline: 0;
+            height: 8rem;
+            border-radius: 50%;
+            background: linear-gradient(to bottom right, hsl(50 100 65), hsl(50 100 40));
+            overflow: clip;
+            anchor-name: --inner;
+
+            &::before, &::after {
+                content: '';
+                position: absolute;
+                width: 2rem;
+                left: 25%;
+                inset-block: 0;
+                transform: skew(-15deg);
+                background-color: hsl(0 0 100);
+                opacity: .2;
+                transition: .1s ease;
+            }
+
+            &::after {
+                width: 1rem;
+                left: 55%;
+            }
+
+            .ripple {
+                --xOff: 0px;
+                --yOff: 0px;
+                position: absolute;
+                position-anchor: --inner;
+                width: 0;
+                aspect-ratio: 1;
+                left: var(--xOff);
+                top: var(--yOff);
+                translate: -50% -50%;
+                border-radius: 50%;
+                background-color: hsl(0 0 100 / .3);
+                filter: blur(3px);
+                z-index: -1;
+                animation: scaleFade .5s ease forwards;
+            }
+        }
+
+        & + .base {
+            --clr: hsl(38 85 23);
+            --darker-clr: hsl(from var(--clr) h s calc(l - 3));
+            position: absolute;
+            position-anchor: --btn;
+            width: calc(12rem + 1.4rem);
+            height: 9rem;
+            position-area: top;
+            translate: 0 calc(100% + 1.7rem);
+            border-radius: 50%;
+            background-color: var(--clr);
             z-index: -1;
-            animation: scaleFade .5s ease forwards;
+            border: 2px solid var(--darker-clr);
+            box-shadow: 0 .25rem 0 var(--clr), 0 .5rem 0 var(--clr);
+            transition: .1s ease;
+            .btn-container:has(.btn-outer:active) & { translate: 0 calc(100% + 1.2rem) }
         }
     }
 
-    & + .base {
-        --clr: hsl(38 85 23);
-        --darker-clr: hsl(from var(--clr) h s calc(l - 3));
-        position: absolute;
-        position-anchor: --btn;
-        width: calc(12rem + 1.4rem);
-        height: 9rem;
-        position-area: top;
-        translate: 0 calc(100% + 1.7rem);
-        border-radius: 50%;
-        background-color: var(--clr);
-        z-index: -1;
-        border: 2px solid var(--darker-clr);
-        box-shadow: 0 .25rem 0 var(--clr), 0 .5rem 0 var(--clr);
-        transition: .1s ease;
-        .btn-container:has(.btn-outer:active) & { translate: 0 calc(100% + 1.2rem) }
+}
+
+.score-wrapper {
+    position: relative;
+    padding: 1rem 2rem;
+    background-color: var(--primary-light-2);
+    text-align: center;
+    font-family: var(--accent-font);
+    color: hsl(120 61 50);
+    font-size: 2rem;
+
+    &::before {
+        content: '$ ';
+        color: hsl(0 0 100 / .65);
     }
 }
 
 @keyframes fadeIn { from { translate: 0 -1rem; opacity: 0 } }
 @keyframes scaleFade { to { width: 200%; opacity: 0 } }
+
+#final-jeopardy-page {
+    #wager-amount-form:not(.hidden) + #final-answer-form {
+        display: none;
+    }
+    
+    form {
+        width: min(100%, 25rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.5rem;
+        transition: .5s ease;
+        * { width: 100% }
+
+        input, textarea {
+            background-color: var(--primary-dark-2);
+            border: none;
+            border-radius: 2rem;
+            padding: 1.5rem;
+            box-shadow:
+                inset 0 1px 2px hsl(0 0 0 / .7),
+                inset 0 -1px 2px hsl(0 0 100 / .2);
+            transition: .2s ease;
+            
+            &::placeholder { color: hsl(0 0 100 / .5)}
+            
+            &:focus {
+                outline: none;
+                background-color: var(--primary-dark);
+            }
+        }
+        
+        #wager-amount {
+            text-align: center;
+            font-family: var(--accent-font);
+            font-size: 1.8rem;
+        }
+        
+        textarea {
+            aspect-ratio: 1;
+            resize: none;
+            line-height: 2;
+            font-family: var(--san-serif);
+            font-size: 1rem;
+        }
+    }
+}
+
+#wager-amount-form {
+    flex: 1;
+    padding: 1rem;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition-behavior: allow-discrete;
+    interpolate-size: allow-keywords;
+
+    .wager-wrapper {
+        flex: 1;
+        align-content: center;
+        *:nth-child(1) { margin-bottom: 2rem }
+    }
+
+    &.hidden {
+        flex: 0;
+        padding-block: 0;
+        opacity: 0;
+        @starting-style {
+            flex: 1;
+            padding: 1rem;
+            opacity: 1;
+        }
+    }
+}
+
+#final-answer-form {
+    flex: 1;
+    padding: 1rem;
+    opacity: 1;
+    overflow: hidden;
+
+    @starting-style {
+        flex: 0;
+        padding: 0;
+        opacity: 0;
+    }
+}
+
+input[type=number] {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+

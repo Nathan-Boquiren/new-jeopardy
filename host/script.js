@@ -1,13 +1,13 @@
 let cl = console.log;
 
-import { updateScoreInBackend, listenToBuzzes, setQuestionActiveState } from "./host.js";
+import { updateScoreInBackend, listenToBuzzes, setQuestionActiveState, setFinalJeopardyState } from "./host.js";
 
 // ========== DOM Elements ==========
-const addPlayerBtn = document.getElementById("add-player-btn");
-const formModal = document.getElementById("form-modal");
-const playerNameForm = document.getElementById("players-form");
-const nameInput = playerNameForm.querySelector("input");
-const closeBtns = document.querySelectorAll(".close-btn");
+// const addPlayerBtn = document.getElementById("add-player-btn");
+// const formModal = document.getElementById("form-modal");
+// const playerNameForm = document.getElementById("players-form");
+// const nameInput = playerNameForm.querySelector("input");
+// const closeBtns = document.querySelectorAll(".close-btn");
 const startBtn = document.getElementById("start-btn");
 const topicNameWrappers = document.querySelectorAll(".topic-name");
 const categoriesContainer = document.getElementById("game-board");
@@ -15,6 +15,8 @@ const popUp = document.getElementById("question-answer");
 const questionWrapper = document.getElementById("question-wrapper");
 const showAnswerBtn = document.getElementById("show-answer-btn");
 const returnBtn = document.getElementById("return-btn");
+const timerBar = document.getElementById("timer-bar");
+
 const playersContainer = document.getElementById("players-container");
 const timeMsg = document.getElementById("time-msg");
 const finalJeopardyBtn = document.getElementById("final-jeopardy-btn");
@@ -282,8 +284,18 @@ class FinalJeopardy {
     this.answer = answer;
   }
 
+  showWager() {
+    popUp.classList.add("show-wager");
+    // Enable final jeopardy mode in backend
+    setFinalJeopardyState(true);
+  }
+
   showQuestion() {
-    popUp.classList.add("show-question");
+    this.enableFinalJeopardyControl();
+
+    // popUp.classList.add("show-question");
+    popUp.classList.replace("show-wager", "show-question");
+
     popUp.querySelector(".price").innerText = "D.O.N.";
 
     cl(`Q: ${this.question}\nA:${this.answer.split("<br>")[0]}\n`);
@@ -292,9 +304,26 @@ class FinalJeopardy {
     popUp.querySelector("#question-txt").innerHTML = this.question;
     popUp.querySelector("#answer-txt").innerHTML = this.answer;
 
-    startCountdown(60);
+    // startCountdown(60);
     game.players.forEach((p) => p.addFinalScoreBtns());
   }
+
+  enableFinalJeopardyControl() {
+    const audio = new Audio("../assets/sfx/final-jeopardy-theme.mp3");
+    document.addEventListener("keydown", async (e) => {
+      if (e.key === " ") {
+        audio.paused ? audio.play() : audio.pause();
+        startCountdown(90);
+        await delay(90000);
+        cl("Times UP!!!!!!");
+        setFinalJeopardyState(false);
+      }
+    });
+  }
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 // ========== Variables ==========
@@ -304,23 +333,19 @@ game.buildQuestions();
 // ========== Start Page ==========
 {
   // Modal Functionality
-  addPlayerBtn.addEventListener("click", () => formModal.showModal());
-  addPlayerBtn.addEventListener("keypress", (e) => (e.key === "Enter" ? formModal.showModal() : null));
-  closeBtns.forEach((btn) => btn.addEventListener("click", () => formModal.close()));
-
-  // Add players
-  playerNameForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const playerName = nameInput.value;
-    if (playerName.replace(/\s+/g, "") !== "") game.addPlayer(playerName);
-    nameInput.value = "";
-  });
-
-  // Start Game
-  startBtn.addEventListener("click", () => {
-    game.initialize();
-  });
+  // addPlayerBtn.addEventListener("click", () => formModal.showModal());
+  // addPlayerBtn.addEventListener("keypress", (e) => (e.key === "Enter" ? formModal.showModal() : null));
+  // closeBtns.forEach((btn) => btn.addEventListener("click", () => formModal.close()));
+  // playerNameForm.addEventListener("submit", (e) => {
+  //   e.preventDefault();
+  //   const playerName = nameInput.value;
+  //   if (playerName.replace(/\s+/g, "") !== "") game.addPlayer(playerName);
+  //   nameInput.value = "";
+  // });
 }
+
+// Start Game
+startBtn.addEventListener("click", () => game.initialize());
 
 // populate category elements
 function populateCategories(categories) {
@@ -331,15 +356,18 @@ showAnswerBtn.addEventListener("click", () => popUp.classList.add("show-answer")
 
 returnBtn.addEventListener("click", () => {
   popUp.className = "";
-
-  //
-  // Set Question Active State in backend
   setQuestionActiveState(false);
-  //
-  //
+  document.querySelector(".buzz-winner-wrapper").remove();
 
   // game.advancePlayer();
 });
+
+// ===== Display Player Buzz in Winner =====
+function displayBuzzWinner(playerName) {
+  cl(playerName);
+  const winnerNameWrapper = createElement("div", ["buzz-winner-wrapper", "pill-btn"], `Buzz In Winner: ${playerName}`);
+  popUp.append(winnerNameWrapper);
+}
 
 // ===== player elements =====
 
@@ -350,7 +378,6 @@ function renderPlayers() {
 
 // ===== TIMER =====
 function startCountdown(duration) {
-  const timerBar = document.getElementById("timer-bar");
   timerBar.style.width = "100%";
   const start = performance.now();
 
@@ -379,7 +406,7 @@ function startCountdown(duration) {
 }
 
 // ===== FINAL JEOPARDY =====
-finalJeopardyBtn.addEventListener("click", () => game.questions.finalJeopardy.showQuestion());
+finalJeopardyBtn.addEventListener("click", () => game.questions.finalJeopardy.showWager());
 
 function createElement(tag, classes = [], text = "") {
   const element = document.createElement(tag);
@@ -394,4 +421,4 @@ function createElement(tag, classes = [], text = "") {
   return element;
 }
 
-export { game, startCountdown };
+export { game, startCountdown, displayBuzzWinner };

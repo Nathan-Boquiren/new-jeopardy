@@ -2,11 +2,16 @@ import { db, auth, onAuthStateChanged, ref, set, child, get, onValue } from "../
 
 const cl = console.log;
 // DOM Elements
+const form = document.getElementById("join-game-page");
+const finalJeopardyPage = document.getElementById("final-jeopardy-page");
+const scoreWrappers = document.querySelectorAll(".score-wrapper");
+const nameWrapper = document.getElementById("player-name");
 const btn = document.getElementById("btn");
 const inner = btn.querySelector(".btn-inner");
-const form = document.getElementById("join-game-form");
-const scoreWrapper = document.getElementById("score-wrapper");
-const nameWrapper = document.getElementById("player-name");
+const wagerForm = document.getElementById("wager-amount-form");
+const wagerInput = document.getElementById("wager-amount");
+const finalAnswerForm = document.getElementById("final-answer-form");
+const finalInput = document.getElementById("answer-input");
 
 let playerId;
 let gameCode;
@@ -22,22 +27,39 @@ function setUserId(id) {
 }
 
 // write data
-function createPlayerInDB({ gameCode, playerId, name }) {
-  set(ref(db, `games/${gameCode}/players/${playerId}`), {
-    name: name,
-    score: 0,
-  });
+function createPlayerInDB({ code, playerId, name }) {
+  get(ref(db, `games/${code}`)).then((ss) => {
+    if (!ss.exists()) {
+      console.error("Game does not exist", code);
+      return;
+    }
 
-  // On score value change
-  onValue(ref(db, `games/${gameCode}/players/${playerId}/score`), (snapshot) => {
-    const score = snapshot.val();
-    scoreWrapper.innerText = score;
-  });
+    gameCode = code;
+    renderPlayerName(name);
+    form.classList.add("hidden");
 
-  // on question showing state change
-  onValue(ref(db, `games/${gameCode}/questionActive`), (ss) => {
-    const state = ss.val();
-    playerCanBuzzIn = state;
+    set(ref(db, `games/${gameCode}/players/${playerId}`), {
+      name: name,
+      score: 0,
+    });
+
+    // On score value change
+    onValue(ref(db, `games/${gameCode}/players/${playerId}/score`), (snapshot) => {
+      const score = snapshot.val();
+      scoreWrappers.forEach((el) => (el.innerText = score));
+    });
+
+    // on question showing state change
+    onValue(ref(db, `games/${gameCode}/questionActive`), (ss) => {
+      const state = ss.val();
+      playerCanBuzzIn = state;
+    });
+
+    // On final jeopardy state change
+    onValue(ref(db, `games/${gameCode}/finalJeopardy`), (ss) => {
+      const state = ss.val();
+      if (state) controlFinalJeopardy(state);
+    });
   });
 }
 
@@ -48,15 +70,13 @@ form.addEventListener("submit", (e) => {
 
   const data = getPlayerData();
   createPlayerInDB(data);
-  renderPlayerName(data.name);
-  form.classList.add("hidden");
 });
 
 function getPlayerData() {
-  const code = form.querySelector("#game-id-input").value;
-  gameCode = code;
+  let code = form.querySelector("#game-id-input").value;
+  code = code.replace(/\s/g, "");
   const name = form.querySelector("#name-input").value;
-  return { gameCode, playerId, name };
+  return { code, playerId, name };
 }
 
 function renderPlayerName(name) {
@@ -93,4 +113,39 @@ function animateRipple(x, y) {
 function playSound() {
   const sound = new Audio("../assets/sfx/duolingo-sfx.mp3");
   sound.play();
+}
+
+// FINAL JEOPARDY
+
+function controlFinalJeopardy(state) {
+  if (state) {
+    finalJeopardyPage.classList.add("show");
+    const score = scoreWrappers[0].innerText;
+    wagerInput.setAttribute("max", score);
+  } else {
+    finalJeopardyPage.classList.add("closed-answer");
+  }
+}
+
+wagerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const amount = wagerInput.value;
+  wagerForm.classList.add("hidden");
+  setTimeout(() => wagerForm.remove(), 500);
+
+  setFinalJeopardyBackendData("wager", amount);
+});
+
+finalAnswerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const answer = finalInput.value;
+
+  setFinalJeopardyBackendData("answer", answer);
+});
+
+// final jeopardy backend stuff
+
+function setFinalJeopardyBackendData(dataType, data) {
+  const dataRef = ref(db, `games/${gameCode}/players/${playerId}/finalJeopardy/${dataType}/`);
+  set(dataRef, data);
 }

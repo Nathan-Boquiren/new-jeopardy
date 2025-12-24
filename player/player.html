@@ -5,33 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../global.css">
-    <link rel="stylesheet" href="player.css">
+    <link rel="stylesheet" href="./player.css">
     <script src="../firebase.js" type="module" defer></script>
-    <script src="player.js" type="module" defer></script>
+    <script src="./player.js" type="module" defer></script>
     <title>Jeopardy! Player</title>
 </head>
 
-<body>
-    <section id="join-game-page">
-        <h1 class="depth">Join Game!</h1>
-        <form id="join-game-form">
-            <div class="input-container depth">
-                <label for="game-id-input" class="accent-font">Game ID</label>
-                <input type="text" name="game-id" id="game-id-input" autocomplete="off">
-            </div>
+<body class="accent-elements">
+    <form id="join-game-page">
+        <img src="../assets/imgs/jeopardy-logo.png" class="jeopardy-logo" alt="jeopardy logo">
+        <p class="instruction">Enter Game ID and Your Player Username.</p>
+        <div class="input-container depth">
+            <input type="text" name="game-id" id="game-id-input" class="accent-font" autocomplete="off"
+                inputmode="numeric" required>
+            <label for="game-id-input" class="accent-font">Game ID</label>
+        </div>
 
-            <div class="input-container depth">
-                <label for="name-input" class="accent-font">Name</label>
-                <input type="text" name="name" id="name-input" autocomplete="off">
-            </div>
+        <div class="input-container depth">
+            <input type="text" name="name" id="name-input" class="accent-font" autocomplete="off" required>
+            <label for="name-input" class="accent-font">Name</label>
+        </div>
 
-            <button type="submit" id="join-game-btn" class="pill-btn filled">Join</button>
-        </form>
-
-    </section>
+        <button form="join-game-page" type="submit" id="join-game-btn" class="pill-btn filled">Join</button>
+    </form>
 
     <section id="main-player-page">
-        <h1 class="depth" id="player-name">Jeopardy! Player</h1>
+        <h1 class="depth player-info" id="player-name">Jeopardy! Player</h1>
+
         <div class="btn-container">
             <div id="btn" class="btn-outer" tabindex="0">
                 <div class="btn-inner"></div>
@@ -39,9 +39,26 @@
             <div class="base"></div>
         </div>
 
-        <div id="score-wrapper">0</div>
+        <div class="score-wrapper depth player-info">0</div>
     </section>
 
+    <section id="final-jeopardy-page">
+        <h1>Final Jeopardy</h1>
+        <form id="wager-amount-form">
+            <div class="wager-wrapper">
+                <input id="wager-amount" type="number" min="0" max="" step="10" inputmode="numeric"
+                    placeholder="Wager amount">
+                <button type="submit" class="pill-btn filled">Wager</button>
+            </div>
+
+            <div class="score-wrapper depth player-info">0</div>
+        </form>
+
+        <form id="final-answer-form">
+            <textarea id="answer-input" rows="4" placeholder="Enter your answer. . ."></textarea>
+            <button type="submit" class="pill-btn filled">Submit</button>
+        </form>
+    </section>
 </body>
 
 </html>

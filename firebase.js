@@ -1,7 +1,17 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
-import { getDatabase, ref, set, child, get, onValue, onDisconnect } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
+import {
+  getDatabase,
+  ref,
+  set,
+  child,
+  get,
+  onValue,
+  onDisconnect,
+  runTransaction,
+  onChildAdded,
+} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCq_Zik5IKd4xbiI2a-48BbwJXrvmui46g",
@@ -25,4 +35,4 @@ signInAnonymously(auth)
   .then(() => console.log("Signed in anonymously"))
   .catch((error) => console.error(error));
 
-export { onDisconnect, app, auth, onAuthStateChanged, analytics, db, ref, set, child, get, onValue };
+export { onDisconnect, app, auth, onAuthStateChanged, analytics, db, ref, set, child, get, onValue, runTransaction, onChildAdded };
