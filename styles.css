@@ -15,9 +15,7 @@ body {
     gap: 2rem;
 }
 
-.jeopardy-logo {
-    width: max(300px, 50vw);
-}
+.jeopardy-logo { width: max(300px, 50vw) }
 
 a {
     text-align: center;
@@ -41,8 +39,5 @@ a {
     width: 20rem;
     bottom: 2rem;
     right: 2rem;
-
-    @media(max-width: 700px) {
-        display: none;
-    }
+    @media(max-width: 700px) { display: none }
 }

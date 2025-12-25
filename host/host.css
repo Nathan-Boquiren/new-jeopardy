@@ -1,3 +1,16 @@
+@keyframes bounce {
+    40%, 100%  { translate: 0 .5rem }
+}
+
+@keyframes fade {
+    from { opacity: 0}
+    /* to { opacity: 1 } */
+}
+
+@keyframes breathe {
+    to {  scale: 1.1 }
+}
+
 body {
     position: relative;
     &:not(:has(#start-page.hidden)) > *:not(#start-page) {display: none}
@@ -112,10 +125,6 @@ body {
     }
 }
 
-@keyframes bounce {
-    40%, 100%  { translate: 0 .5rem }
-}
-
 /* Player Name Container */
 
 .player-container-wrapper, .code-container {
@@ -167,113 +176,7 @@ body {
 
         @starting-style { flex: 0 }
     }
-
-    /* #add-player-btn {
-        align-self: flex-end;
-        display: flex;
-        font-size: 2.5rem;
-        cursor: pointer;
-        transition: .2s ease;
-        &:hover { scale: 1.1 }
-        &:active { scale: 1 }
-    } */
 }
-
-/* Form Modal */
-
-/* #form-modal {
-    position: fixed;
-    inset: 0;
-    margin: auto;
-    background-color: var(--primary-dark);
-    border-radius: 3rem;
-    padding: 1.5rem 2rem 1rem;
-    border: 1px solid hsl(0 0 100 /.1);
-    backdrop-filter: blur(1rem);
-    opacity: 0;
-    translate: 0 25vh;
-    display: none;
-    transition-property: display opacity translate;
-
-    &, &::backdrop {
-        transition-duration: .4s;
-        transition-timing-function: ease;
-        transition-behavior: allow-discrete;
-    }
-    
-    &[open] {
-        display: block;
-        translate: 0 0vh;
-        opacity: 1;
-    }
-
-    &::backdrop {
-        opacity: 0;
-        backdrop-filter: blur(.5rem) brightness(0.7);
-        transition-property: opacity display overlay;
-    }
-
-    &[open]::backdrop { opacity: 1 }
-
-    @starting-style {
-        &[open] {opacity: 0; translate: 0 -25vh}
-        &[open]::backdrop {opacity: 0}
-    }
-}
-
-#players-form {
-    & > *:is(:nth-child(2), :nth-child(3)) {
-        margin-bottom: 1.5rem;
-    }
-
-    label {
-        display: block;
-        color: var(--accent);
-        font-weight: 600;
-        font-size: 1.5rem;
-    }
-
-    input {
-        background-color: transparent;
-        border: 2px solid white;
-        font-size: 2rem;
-        padding: 1rem;
-        border-radius: 2rem;
-        transition: background-color 0.2s ease;
-        &:focus {outline: none; background-color: rgb(255 255 255 / .1);}
-    }
-
-    #close-btn {
-        display: block;
-        margin-left: auto;
-        background-color: transparent;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        transition: .2s ease;
-        path { fill: hsl(0 0 100 / .7) }
-        &:hover path { fill: hsl(0 0 100) }
-    }
-
-    #submit-btn {
-        display: block;
-        margin-left: auto;
-        color: var(--accent);
-        background-color: transparent;
-        border: none;
-        font-size: 1.8rem;
-        font-weight: 600;
-        cursor: pointer;
-        &:hover {animation: bounce 0.3s ease forwards}
-    }
-}
-
-@keyframes bounce {
-    0% {translate: 0px}
-    20% {translate: -2px}
-    80% {translate: 7px}
-    100% {translate: 5px}
-} */
 
 /* ========== MAIN GAME PAGE ========== */
 
@@ -562,11 +465,6 @@ aside {
     }
 }
 
-@keyframes fade {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
 #answer-wrapper, #question-wrapper {
     flex: 1;
     flex-direction: column;
@@ -612,10 +510,6 @@ aside {
         animation: breathe 2s ease-in-out alternate infinite;
     }
     #question-answer.show-wager & { display: flex }
-}
-
-@keyframes breathe {
-    to {  scale: 1.1; }
 }
 
 /* Timer */

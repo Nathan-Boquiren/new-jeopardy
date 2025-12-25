@@ -14,24 +14,18 @@
 /* ===== Variables ===== */
 
 :root {
-    /* --primary: hsl(240 100 30); */
-    /* --primary-light: hsl(0 0 100 / .1); */
-    /* --primary-light-1: hsl(0 0 100 / .075); */
-    /* --primary-light-2: hsl(0 0 100 / .2); */
-    /* --primary-light-3: hsl(0 0 100 / .3); */
     --primary-dark-2: hsl(240 100 22);
     --primary-dark: hsl(240 100 25);
-    --primary:          hsl(240 100 30);
-    --primary-light:    hsl(240 72 37);
-    --primary-light-1:  hsl(240 79 35);
-    --primary-light-2:  hsl(240 54 44);
-    --primary-light-3:  hsl(240 43 51);
+    --primary: hsl(240 100 30);
+    --primary-light: hsl(240 72 37);
+    --primary-light-1: hsl(240 79 35);
+    --primary-light-2: hsl(240 54 44);
+    --primary-light-3: hsl(240 43 51);
     --accent: hsl(50 100 45);
-
-    --accent-font: 'Anton', Arial, Helvetica, sans-serif;
-    --san-serif: 'Roboto', Arial, Helvetica, sans-serif;
     --accent-clr-light: hsl(54 100 50);
     --accent-clr-dark: hsl(from var(--accent) h calc(s + 20) calc(l - 20));
+    --accent-font: 'Anton', Arial, Helvetica, sans-serif;
+    --san-serif: 'Roboto', Arial, Helvetica, sans-serif;
     interpolate-size: allow-keywords;
 }
 
@@ -92,7 +86,6 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-
 /* ===== Depth Styles ===== */
 
 .depth {
@@ -134,10 +127,5 @@ h1, h2, h3, h4, h5, h6 {
 
 /* View Transition */
 
-@view-transition {
-    navigation: auto;
-}
-
-.jeopardy-logo {
-    view-transition-name: --jeopardy-logo;
-}
+@view-transition { navigation: auto }
+.jeopardy-logo { view-transition-name: --jeopardy-logo }

@@ -3,11 +3,6 @@ let cl = console.log;
 import { updateScoreInBackend, listenToBuzzes, setQuestionActiveState, setFinalJeopardyState, finalizeScore } from "./host.js";
 
 // ========== DOM Elements ==========
-// const addPlayerBtn = document.getElementById("add-player-btn");
-// const formModal = document.getElementById("form-modal");
-// const playerNameForm = document.getElementById("players-form");
-// const nameInput = playerNameForm.querySelector("input");
-// const closeBtns = document.querySelectorAll(".close-btn");
 const startBtn = document.getElementById("start-btn");
 const topicNameWrappers = document.querySelectorAll(".topic-name");
 const categoriesContainer = document.getElementById("game-board");
@@ -342,20 +337,7 @@ const game = new Game(categoryPath);
 game.buildQuestions();
 
 // ========== Start Page ==========
-{
-  // Modal Functionality
-  // addPlayerBtn.addEventListener("click", () => formModal.showModal());
-  // addPlayerBtn.addEventListener("keypress", (e) => (e.key === "Enter" ? formModal.showModal() : null));
-  // closeBtns.forEach((btn) => btn.addEventListener("click", () => formModal.close()));
-  // playerNameForm.addEventListener("submit", (e) => {
-  //   e.preventDefault();
-  //   const playerName = nameInput.value;
-  //   if (playerName.replace(/\s+/g, "") !== "") game.addPlayer(playerName);
-  //   nameInput.value = "";
-  // });
-}
 
-// Start Game
 startBtn.addEventListener("click", () => game.initialize());
 
 // populate category elements
