@@ -17,12 +17,12 @@
         <p class="instruction">Enter Game ID and Your Player Username.</p>
         <div class="input-container depth">
             <input type="text" name="game-id" id="game-id-input" class="accent-font" autocomplete="off"
-                inputmode="numeric" required>
+                inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required>
             <label for="game-id-input" class="accent-font">Game ID</label>
         </div>
 
         <div class="input-container depth">
-            <input type="text" name="name" id="name-input" class="accent-font" autocomplete="off" required>
+            <input type="text" name="name" id="name-input" class="accent-font" autocomplete="off" maxlength="30" required>
             <label for="name-input" class="accent-font">Name</label>
         </div>
 

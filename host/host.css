@@ -362,10 +362,7 @@ aside {
             background-color: var(--color);
             transition: all 0.2s ease;
 
-            > svg {
-                height: 40px;
-                width: 40px;
-            }
+            > svg { height: 40px;  width: 40px }
             
             &:is(.answer-right) {--color: #32cd32}
             &:is(.answer-wrong) {--color: #ff0000}
@@ -376,7 +373,6 @@ aside {
             box-shadow: 0 5px 0 hsl(from var(--color) h s calc(l - 20));
         }
         > *:active {transform: none; box-shadow: none}
-
     }
 }
 

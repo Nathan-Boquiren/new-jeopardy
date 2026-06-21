@@ -11,6 +11,7 @@ import {
   onDisconnect,
   runTransaction,
   onChildAdded,
+  serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
 
 const firebaseConfig = {
@@ -35,4 +36,4 @@ signInAnonymously(auth)
   .then(() => console.log("Signed in anonymously"))
   .catch((error) => console.error(error));
 
-export { onDisconnect, app, auth, onAuthStateChanged, analytics, db, ref, set, child, get, onValue, runTransaction, onChildAdded };
+export { onDisconnect, app, auth, onAuthStateChanged, analytics, db, ref, set, child, get, onValue, runTransaction, onChildAdded, serverTimestamp };

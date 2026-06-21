@@ -1,9 +1,9 @@
-let cl = console.log;
 
-import { updateScoreInBackend, listenToBuzzes, setQuestionActiveState, setFinalJeopardyState, finalizeScore } from "./host.js";
+import { updateScoreInBackend, setQuestionActiveState, setFinalJeopardyState, finalizeScore } from "./host.js";
 
 // ========== DOM Elements ==========
 const startBtn = document.getElementById("start-btn");
+const questionSelector = document.getElementById("question-selector");
 const topicNameWrappers = document.querySelectorAll(".topic-name");
 const categoriesContainer = document.getElementById("game-board");
 const popUp = document.getElementById("question-answer");
@@ -20,9 +20,10 @@ const endPageHeader = document.getElementById("winner-header");
 
 const jeopardyTheme = new Audio("../assets/sfx/final-jeopardy-theme.mp3");
 
-// =============== CHANGE ACCORDING TO EVENT ================
-const categoryPath = "../questions/christmas-questions.json";
-// ==========================================================
+// Get selected category path from dropdown
+function getCategoryPath() {
+  return questionSelector.value;
+}
 
 // ========== Classes ==========
 class Game {
@@ -45,13 +46,8 @@ class Game {
   }
 
   initialize() {
-    cl("Initializing game...");
     document.getElementById("start-page").classList.add("hidden");
     this.renderBoard();
-    cl("Game initialized successfully");
-
-    // listen for player buzz-ins in backend database
-    listenToBuzzes();
   }
 
   renderBoard() {
@@ -108,7 +104,6 @@ class Game {
     fetch(this.categoryPath)
       .then((res) => res.json())
       .then((data) => {
-        cl(data);
         return data;
       })
       .catch((error) => console.error("JSON fetch error:", error));
@@ -205,9 +200,11 @@ class Player {
   }
 
   delete() {
-    const idx = game.players.indexOf(this);
-    game.players.splice(idx, 1);
-    renderPlayers();
+    if (confirm(`Remove player "${this.name}"?`)) {
+      const idx = game.players.indexOf(this);
+      game.players.splice(idx, 1);
+      renderPlayers();
+    }
   }
 }
 
@@ -268,8 +265,6 @@ class JeopardyItem {
     const question = category.questions[this.price].question;
     const answer = category.questions[this.price].answer;
 
-    cl(`Q: ${question}\nA:${answer.split("<br>")[0]}\n`);
-
     popUp.querySelector(".category").innerHTML = this.categoryName;
     popUp.querySelector("#question-txt").innerHTML = question;
     popUp.querySelector("#answer-txt").innerHTML = answer;
@@ -301,8 +296,6 @@ class FinalJeopardy {
 
     popUp.querySelector(".price").innerText = "D.O.N.";
 
-    cl(`Q: ${this.question}\nA:${this.answer.split("<br>")[0]}\n`);
-
     popUp.querySelector(".category").innerHTML = this.categoryName;
     popUp.querySelector("#question-txt").innerHTML = this.question;
     popUp.querySelector("#answer-txt").innerHTML = this.answer;
@@ -333,7 +326,7 @@ function delay(ms) {
 }
 
 // ========== Variables ==========
-const game = new Game(categoryPath);
+const game = new Game(getCategoryPath());
 game.buildQuestions();
 
 // ========== Start Page ==========
@@ -358,7 +351,6 @@ returnBtn.addEventListener("click", () => {
 
 // ===== Display Player Buzz in Winner =====
 function displayBuzzWinner(playerName) {
-  cl(playerName);
   const winnerNameWrapper = createElement("div", ["buzz-winner-wrapper", "pill-btn"], `Buzz In Winner: ${playerName}`);
   popUp.append(winnerNameWrapper);
 }

@@ -1,6 +1,5 @@
-const cl = console.log;
 
-import { onDisconnect, auth, onAuthStateChanged, db, ref, set, onValue, get, child, runTransaction, onChildAdded } from "../firebase.js";
+import { onDisconnect, auth, onAuthStateChanged, db, ref, set, onValue, get, child, runTransaction, onChildAdded, serverTimestamp } from "../firebase.js";
 import { game, startCountdown, displayBuzzWinner } from "./script.js";
 
 // DOM Elements
@@ -13,6 +12,7 @@ let gameCode;
 function generateCode() {
   return Math.floor(100000 + Math.random() * 900000);
 }
+
 
 onAuthStateChanged(auth, (user) => {
   createGameBtn.addEventListener("click", () => {
@@ -28,11 +28,8 @@ function createGame(host) {
     return;
   }
 
-  // get host id
   const hostId = host.uid;
-  cl("User UID:", hostId);
 
-  // generate game code
   gameCode = generateCode();
   const codeHtml = generateCodeHtml(gameCode);
   gameCodeWrapper.innerHTML = codeHtml;
@@ -40,7 +37,6 @@ function createGame(host) {
   const gameRef = ref(db, `games/${gameCode}`);
   createDisconnect(gameRef);
 
-  // create game in database
   set(gameRef, {
     hostId: hostId,
     createdAt: Date.now(),
@@ -48,13 +44,15 @@ function createGame(host) {
     buzzes: {},
   });
 
-  // listen for and add players
   const playersRef = ref(db, `games/${gameCode}/players`);
 
   onChildAdded(playersRef, (ss) => {
     const player = ss.val();
     const uid = ss.key;
-    game.addPlayer(player.name, uid);
+    const existingPlayer = game.players.find((p) => p.uid === uid);
+    if (!existingPlayer) {
+      game.addPlayer(player.name, uid);
+    }
   });
 }
 
@@ -74,7 +72,6 @@ function generateCodeHtml(code) {
 function createDisconnect(gameRef) {
   onDisconnect(gameRef)
     .remove()
-    .then(() => cl("onDisconnect remove scheduled"))
     .catch((err) => console.error("Failed to schedule onDisconnect", err));
 }
 
@@ -83,12 +80,14 @@ function updateScoreInBackend(playerUid, newScore) {
   set(playerScoreRef, newScore);
 }
 
-function listenToBuzzes() {
+let buzzListenerUnsubscribe = null;
+
+function startBuzzListener() {
   const buzzesRef = ref(db, `games/${gameCode}/buzzes`);
 
-  onValue(buzzesRef, (ss) => {
+  buzzListenerUnsubscribe = onValue(buzzesRef, (ss) => {
     const buzzIns = ss.val();
-    if (!buzzIns) return;
+    if (!buzzIns || Object.keys(buzzIns).length === 0) return;
 
     const earliestPlayerId = getEarliestPlayerId(buzzIns);
     if (!earliestPlayerId) return;
@@ -104,18 +103,23 @@ function listenToBuzzes() {
     })
       .then((result) => {
         if (!result.committed) return;
-
         displayBuzzWinner(winnerPlayer.name);
         startCountdown(30);
+        stopBuzzListener();
       })
       .catch((error) => console.error(error));
   });
 }
 
-cl(game);
+function stopBuzzListener() {
+  if (buzzListenerUnsubscribe) {
+    buzzListenerUnsubscribe();
+    buzzListenerUnsubscribe = null;
+  }
+}
+
 
 function setFinalJeopardyState(state) {
-  cl("Final Jeopardy");
   const finalJeopardyRef = ref(db, `games/${gameCode}/finalJeopardy`);
   set(finalJeopardyRef, state);
 
@@ -126,7 +130,6 @@ function setFinalJeopardyState(state) {
     if (!players) return;
 
     const allHaveWager = Object.values(players).every((player) => player.finalJeopardy && "wager" in player.finalJeopardy);
-    cl("all have wager: " + allHaveWager);
 
     if (allHaveWager) {
       setWagerAmounts(players);
@@ -150,10 +153,15 @@ function getEarliestPlayerId(buzzIns) {
 }
 
 function setQuestionActiveState(state) {
-  cl("question active:" + state);
   const stateRef = ref(db, `games/${gameCode}/questionActive`);
   set(stateRef, state);
-  resetBuzzIns();
+  if (state) {
+    resetBuzzIns();
+    startBuzzListener();
+  } else {
+    stopBuzzListener();
+    resetBuzzIns();
+  }
 }
 function resetBuzzIns() {
   const buzzesRef = ref(db, `games/${gameCode}/buzzes`);
@@ -177,4 +185,4 @@ function finalizeScore(uid) {
   set(playerFinalRef, true);
 }
 
-export { updateScoreInBackend, listenToBuzzes, setQuestionActiveState, setFinalJeopardyState, finalizeScore };
+export { updateScoreInBackend, setQuestionActiveState, setFinalJeopardyState, finalizeScore };

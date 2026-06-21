@@ -1,6 +1,6 @@
-import { db, auth, onAuthStateChanged, ref, set, child, get, onValue } from "../firebase.js";
+import { db, auth, onAuthStateChanged, ref, set, child, get, onValue, serverTimestamp } from "../firebase.js";
 
-const cl = console.log;
+
 // DOM Elements
 const form = document.getElementById("join-game-page");
 const finalJeopardyPage = document.getElementById("final-jeopardy-page");
@@ -16,10 +16,11 @@ const finalInput = document.getElementById("answer-input");
 let playerId;
 let gameCode;
 let playerCanBuzzIn = false;
+let hasAlreadyBuzzed = false;
+let currentQuestionId = null;
 
 onAuthStateChanged(auth, (user) => {
   setUserId(user.uid);
-  if (user) cl("User UID:", user.uid);
 });
 
 function setUserId(id) {
@@ -30,7 +31,7 @@ function setUserId(id) {
 function createPlayerInDB({ code, playerId, name }) {
   get(ref(db, `games/${code}`)).then((ss) => {
     if (!ss.exists()) {
-      console.error("Game does not exist", code);
+      form.querySelector("p").innerText = "Game does not exist. Please check the code.";
       return;
     }
 
@@ -49,11 +50,12 @@ function createPlayerInDB({ code, playerId, name }) {
       scoreWrappers.forEach((el) => (el.innerText = score));
     });
 
-    // on question showing state change
+    // on question showing state change - reset buzz when question becomes active
     onValue(ref(db, `games/${gameCode}/questionActive`), (ss) => {
       const state = ss.val();
       playerCanBuzzIn = state;
       btn.classList.toggle("can-buzz", playerCanBuzzIn);
+      if (state) hasAlreadyBuzzed = false;
     });
 
     // On final jeopardy state change
@@ -85,9 +87,8 @@ function renderPlayerName(name) {
 }
 
 function buzzIn() {
-  cl("pressed");
   set(ref(db, `games/${gameCode}/buzzes/${playerId}`), {
-    timestamp: Date.now(),
+    timestamp: serverTimestamp(),
     playerId,
   });
 }
@@ -95,7 +96,8 @@ function buzzIn() {
 // MAIN PAGE
 
 btn.addEventListener("pointerdown", (e) => {
-  if (!playerCanBuzzIn) return;
+  if (!playerCanBuzzIn || hasAlreadyBuzzed) return;
+  hasAlreadyBuzzed = true;
   animateRipple(e.x, e.y);
   playSound();
   buzzIn();
@@ -124,7 +126,6 @@ function controlFinalJeopardy(state) {
     const score = scoreWrappers[0].innerText;
     wagerInput.setAttribute("max", score);
   } else {
-    cl("Final jeopardy closed");
     closeFinalJeopardy();
   }
 }
