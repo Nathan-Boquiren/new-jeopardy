@@ -1,5 +1,5 @@
 
-import { updateScoreInBackend, setQuestionActiveState, setFinalJeopardyState, finalizeScore } from "./host.js";
+import { updateScoreInBackend, setQuestionActiveState, setFinalJeopardyState, finalizeScore, removePlayerFromBackend } from "./host.js";
 
 // ========== DOM Elements ==========
 const startBtn = document.getElementById("start-btn");
@@ -145,7 +145,17 @@ class Player {
     const el = document.createElement("span");
     el.classList.add("player-score", "accent-font");
     el.innerText = this.score;
-    el.addEventListener("click", () => this.updateScore(game.currentPrice));
+    
+    el.addEventListener("click", (e) => {
+      const multiplier = e.shiftKey ? -1 : 1;
+      this.updateScore(multiplier * game.currentPrice);
+    });
+
+    el.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+      this.updateScore(-game.currentPrice);
+    });
+
     return el;
   }
 
@@ -202,8 +212,11 @@ class Player {
   delete() {
     if (confirm(`Remove player "${this.name}"?`)) {
       const idx = game.players.indexOf(this);
-      game.players.splice(idx, 1);
-      renderPlayers();
+      if (idx !== -1) {
+        game.players.splice(idx, 1);
+        renderPlayers();
+        removePlayerFromBackend(this.uid);
+      }
     }
   }
 }

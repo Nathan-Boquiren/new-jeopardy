@@ -364,3 +364,27 @@ input[type=number] {
     justify-content: center;
     gap: 1rem;
 }
+
+/* Buzz Winner State */
+.btn-outer.buzz-winner {
+    background: linear-gradient(to bottom right, hsl(120 100 40), hsl(120 100 35)) !important;
+    box-shadow: 0 0 15px hsl(120 100 50), 0 0 0 3px hsl(120 100 30) !important;
+    filter: none !important;
+    pointer-events: none;
+}
+.btn-outer.buzz-winner .btn-inner {
+    background: linear-gradient(to bottom right, hsl(120 100 65), hsl(120 100 40)) !important;
+}
+.btn-outer.buzz-winner + .base {
+    --clr: hsl(120 85 23) !important;
+    filter: none !important;
+}
+
+/* Buzz Loser State */
+.btn-outer.buzz-loser {
+    filter: grayscale(80%) opacity(50%) !important;
+    pointer-events: none;
+}
+.btn-outer.buzz-loser + .base {
+    filter: grayscale(80%) opacity(50%) !important;
+}

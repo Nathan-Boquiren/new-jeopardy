@@ -18,6 +18,7 @@ let gameCode;
 let playerCanBuzzIn = false;
 let hasAlreadyBuzzed = false;
 let currentQuestionId = null;
+let currentBuzzWinner = null;
 
 onAuthStateChanged(auth, (user) => {
   setUserId(user.uid);
@@ -39,9 +40,14 @@ function createPlayerInDB({ code, playerId, name }) {
     renderPlayerName(name);
     form.classList.add("hidden");
 
-    set(ref(db, `games/${gameCode}/players/${playerId}`), {
-      name: name,
-      score: 0,
+    const playerRef = ref(db, `games/${gameCode}/players/${playerId}`);
+    get(playerRef).then((playerSnapshot) => {
+      const existing = playerSnapshot.val();
+      const initialScore = (existing && typeof existing.score === "number") ? existing.score : 0;
+      set(playerRef, {
+        name: name,
+        score: initialScore,
+      });
     });
 
     // On score value change
@@ -54,8 +60,14 @@ function createPlayerInDB({ code, playerId, name }) {
     onValue(ref(db, `games/${gameCode}/questionActive`), (ss) => {
       const state = ss.val();
       playerCanBuzzIn = state;
-      btn.classList.toggle("can-buzz", playerCanBuzzIn);
       if (state) hasAlreadyBuzzed = false;
+      updatePlayerStatus();
+    });
+
+    // on buzz in winner change
+    onValue(ref(db, `games/${gameCode}/buzzInWinner`), (ss) => {
+      currentBuzzWinner = ss.val();
+      updatePlayerStatus();
     });
 
     // On final jeopardy state change
@@ -70,6 +82,16 @@ function createPlayerInDB({ code, playerId, name }) {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  if (!playerId) {
+    const errorText = form.querySelector("p");
+    if (errorText) {
+      errorText.innerText = "Connecting to server... Please try again in a moment.";
+    } else {
+      alert("Connecting to server... Please try again in a moment.");
+    }
+    return;
+  }
 
   const data = getPlayerData();
   createPlayerInDB(data);
@@ -96,12 +118,48 @@ function buzzIn() {
 // MAIN PAGE
 
 btn.addEventListener("pointerdown", (e) => {
-  if (!playerCanBuzzIn || hasAlreadyBuzzed) return;
+  if (!playerCanBuzzIn || hasAlreadyBuzzed || currentBuzzWinner) return;
   hasAlreadyBuzzed = true;
+  updatePlayerStatus();
   animateRipple(e.x, e.y);
   playSound();
   buzzIn();
 });
+
+function updatePlayerStatus() {
+  const statusMsg = document.getElementById("status-msg");
+  if (!statusMsg) return;
+
+  if (!playerCanBuzzIn) {
+    btn.classList.remove("buzz-winner", "buzz-loser");
+    btn.classList.remove("can-buzz");
+    statusMsg.innerText = "Waiting for next question...";
+    return;
+  }
+
+  // Active question state
+  const isClickable = !hasAlreadyBuzzed && !currentBuzzWinner;
+  btn.classList.toggle("can-buzz", isClickable);
+
+  if (currentBuzzWinner) {
+    if (currentBuzzWinner.uid === playerId) {
+      btn.classList.add("buzz-winner");
+      btn.classList.remove("buzz-loser");
+      statusMsg.innerText = "YOUR TURN!";
+    } else {
+      btn.classList.add("buzz-loser");
+      btn.classList.remove("buzz-winner");
+      statusMsg.innerText = `${currentBuzzWinner.name} buzzed in!`;
+    }
+  } else {
+    btn.classList.remove("buzz-winner", "buzz-loser");
+    if (hasAlreadyBuzzed) {
+      statusMsg.innerText = "Buzzed in! Waiting...";
+    } else {
+      statusMsg.innerText = "BUZZ IN!";
+    }
+  }
+}
 
 function animateRipple(x, y) {
   const ripple = Object.assign(document.createElement("div"), { className: "ripple" });
@@ -123,8 +181,15 @@ function playSound() {
 function controlFinalJeopardy(state) {
   if (state) {
     finalJeopardyPage.classList.add("show");
-    const score = scoreWrappers[0].innerText;
-    wagerInput.setAttribute("max", score);
+    const score = parseInt(scoreWrappers[0].innerText, 10) || 0;
+    if (score <= 0) {
+      wagerInput.setAttribute("max", "0");
+      wagerInput.value = "0";
+      wagerForm.classList.add("hidden");
+      setFinalJeopardyBackendData("wager", 0);
+    } else {
+      wagerInput.setAttribute("max", score);
+    }
   } else {
     closeFinalJeopardy();
   }

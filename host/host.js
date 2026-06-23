@@ -81,11 +81,14 @@ function updateScoreInBackend(playerUid, newScore) {
 }
 
 let buzzListenerUnsubscribe = null;
+let isProcessingBuzz = false;
 
 function startBuzzListener() {
+  isProcessingBuzz = false;
   const buzzesRef = ref(db, `games/${gameCode}/buzzes`);
 
   buzzListenerUnsubscribe = onValue(buzzesRef, (ss) => {
+    if (isProcessingBuzz) return;
     const buzzIns = ss.val();
     if (!buzzIns || Object.keys(buzzIns).length === 0) return;
 
@@ -97,8 +100,14 @@ function startBuzzListener() {
 
     const buzzInWinnerRef = ref(db, `games/${gameCode}/buzzInWinner`);
 
+    isProcessingBuzz = true;
     runTransaction(buzzInWinnerRef, (currentValue) => {
-      if (currentValue === null) return winnerPlayer;
+      if (currentValue === null) {
+        return {
+          uid: winnerPlayer.uid,
+          name: winnerPlayer.name,
+        };
+      }
       return;
     })
       .then((result) => {
@@ -107,7 +116,10 @@ function startBuzzListener() {
         startCountdown(30);
         stopBuzzListener();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        isProcessingBuzz = false;
+      });
   });
 }
 
@@ -153,12 +165,15 @@ function getEarliestPlayerId(buzzIns) {
 }
 
 function setQuestionActiveState(state) {
-  const stateRef = ref(db, `games/${gameCode}/questionActive`);
-  set(stateRef, state);
   if (state) {
-    resetBuzzIns();
-    startBuzzListener();
+    resetBuzzIns().then(() => {
+      const stateRef = ref(db, `games/${gameCode}/questionActive`);
+      set(stateRef, true);
+      startBuzzListener();
+    });
   } else {
+    const stateRef = ref(db, `games/${gameCode}/questionActive`);
+    set(stateRef, false);
     stopBuzzListener();
     resetBuzzIns();
   }
@@ -166,8 +181,10 @@ function setQuestionActiveState(state) {
 function resetBuzzIns() {
   const buzzesRef = ref(db, `games/${gameCode}/buzzes`);
   const buzzInWinnerRef = ref(db, `games/${gameCode}/buzzInWinner`);
-  set(buzzesRef, {});
-  set(buzzInWinnerRef, null);
+  return Promise.all([
+    set(buzzesRef, {}),
+    set(buzzInWinnerRef, null),
+  ]);
 }
 
 function setWagerAmounts(players) {
@@ -185,4 +202,9 @@ function finalizeScore(uid) {
   set(playerFinalRef, true);
 }
 
-export { updateScoreInBackend, setQuestionActiveState, setFinalJeopardyState, finalizeScore };
+function removePlayerFromBackend(playerUid) {
+  const playerRef = ref(db, `games/${gameCode}/players/${playerUid}`);
+  set(playerRef, null);
+}
+
+export { updateScoreInBackend, setQuestionActiveState, setFinalJeopardyState, finalizeScore, removePlayerFromBackend };
