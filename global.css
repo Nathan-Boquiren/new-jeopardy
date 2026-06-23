@@ -6,10 +6,7 @@
     corner-shape: squircle;
 }
 
-@font-face {
-    font-family: 'Anton';
-    src: url(assets/fonts/Anton-Regular.ttf);
-}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Murecho:wght@100..900&display=swap');
 
 /* ===== Variables ===== */
 
@@ -25,7 +22,7 @@
     --accent-clr-light: hsl(54 100 50);
     --accent-clr-dark: hsl(from var(--accent) h calc(s + 20) calc(l - 20));
     --accent-font: 'Anton', Arial, Helvetica, sans-serif;
-    --san-serif: 'Roboto', Arial, Helvetica, sans-serif;
+    --san-serif: 'Murecho', Arial, Helvetica, sans-serif;
     interpolate-size: allow-keywords;
 }
 
@@ -38,12 +35,12 @@ body {
 /* ===== Typography ===== */
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Anton", Arial, Helvetica, sans-serif;
+    font-family: var(--accent-font);
     color: var(--accent);
-    font-weight: 500;
+    font-weight: 400;
 }
 
-.accent-font {font-family: var(--accent-font)}
+.accent-font { font-family: var(--accent-font) }
 
 .txt-shadow {text-shadow: 2px 2px 3px hsl(0 0 0 / .2)}
 

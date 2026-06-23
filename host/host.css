@@ -109,7 +109,7 @@ body {
             color: var(--accent);
             font-family: var(--accent-font);
             font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-            font-weight: 500;
+            /* font-weight: 500; */
             text-transform: uppercase;
             text-align: center;
             
@@ -248,7 +248,7 @@ body {
         align-content: center;
         list-style: none;
         font-family: var(--accent-font);
-        font-weight: 500;
+        /* font-weight: 500; */
         font-size: clamp(1rem, 3vw, 2.5rem);
         color: var(--accent);
 
@@ -285,7 +285,8 @@ body {
 
         h2 {
             color: var(--accent);
-            font-weight: 800;
+            /* font-weight: 800; */
+            font-weight: 400;
             font-size: clamp(2rem, 7vw, 4rem);
             text-transform: uppercase;
         }
@@ -314,7 +315,7 @@ body {
         padding-inline: 1rem;
         margin-bottom: 1rem;
         font-size: clamp(2rem, 3vw, 2.3rem);
-        font-weight: 500;
+        /* font-weight: 500; */
         line-height: 1.2;
         text-align: center;
         flex: 1 1 calc(1/6 * 100%);
@@ -372,7 +373,7 @@ aside {
     &:has(.highest-score) { order: -1 }
 
     .player-name-wrapper {
-        font-weight: 500;
+        /* font-weight: 500; */
         font-size: 1.7rem;
         margin-right: auto;
     }
@@ -380,7 +381,7 @@ aside {
     .player-score {
         text-align: end;
         color: var(--accent);
-        font-weight: 500;
+        /* font-weight: 500; */
         font-size: 3rem;
         cursor: pointer;
         margin-right: 2rem;
@@ -521,7 +522,7 @@ aside {
         bottom: 3rem;
         font-family: var(--accent-font);
         background-color: var(--primary-light);
-        font-weight: 400;
+        /* font-weight: 400; */
         height: auto;
         translate: 0 0;
         opacity: 1;
