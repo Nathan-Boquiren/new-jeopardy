@@ -124,13 +124,17 @@ body {
                 font-size: 1.1rem;
                 padding: 0.5rem;
                 transition: .15s ease;
-                
 
-                &:checked { background-color: var(--primary-600) }
-
+                &:checked {
+                    background-color: var(--secondary-300, var(--primary-600));
+                    box-shadow: 0 2px .5rem hsl(0 0 0 / .15);
+                    border-radius: var(--radius-50);
+                    margin-inline: .5rem;
+                    border-top: 1px solid hsl(0 0 100 / .2);
+                }
                 &::checkmark {
-                    content: 'check';
                     font-family: "Material Symbols Rounded";
+                    content: 'check';
                 }
             }
         }
@@ -205,7 +209,8 @@ body {
 
 ::picker(select) {
     appearance: base-select;
-    background-color: var(--primary-200);
+    background-color: hsl(from var(--primary-200) h s l / .65);
+    backdrop-filter: blur(1.5rem);
     border-radius: var(--radius-100);
     margin: .5rem 0;
     opacity: 0;
@@ -322,7 +327,7 @@ body {
 #game-board {
     --hdr-gap: 1rem;
     --hdr-height: 9rem;
-    
+
     anchor-name: --board;
 
     flex: 1 1 70%;

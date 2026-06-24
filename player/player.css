@@ -9,6 +9,16 @@
     --buzzer-inner-bg-1: hsl(50 100 65);
     --buzzer-inner-bg-2: hsl(50 100 40);
     --buzzer-base: hsl(38 85 23);
+
+
+    &:has(.america-style) {
+        --buzzer-outer-bg-1: var(--secondary-300);
+        --buzzer-outer-bg-2: hsl(from var(--buzzer-outer-bg-1) h s calc(l - 5));
+        --buzzer-outer-shadow: hsl(from var(--buzzer-outer-bg-1) h s calc(l - 10));
+        --buzzer-inner-bg-1: hsl(from var(--buzzer-outer-bg-1) h s calc(l + 25));
+        --buzzer-inner-bg-2: var(--buzzer-outer-bg-1);
+        --buzzer-base: hsl(23 84 15);
+    }
 }
 
 body {
@@ -121,12 +131,14 @@ body {
 
     .btn-container {
         flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
+        display: grid;
+        grid-template-areas: "stack";
+        place-items: center;
+        > * { grid-area: stack }
         * { corner-shape: round }
+
+        &:has(#btn.buzz-winner) { pointer-events: none }
+        &:has(#btn.buzz-loser, #btn:not(.can-buzz, .buzz-winner)) { filter: saturate(.7) opacity(.5) }
     }
 
     .btn-outer {
@@ -145,12 +157,10 @@ body {
             height: 8rem;
             border-radius: var(--radius-circle);
             translate: 0 1.5rem;
-            .btn-inner { &::before, &::after { left: 100% } }
-        }
 
-        &:not(.can-buzz) {
-            filter: grayscale(100%);
-            pointer-events: none;
+            .btn-inner::before, .btn-inner::after { left: 100% }
+            & + .base { margin-top: 3.3rem }
+            &::before { translate: 0 -0.4rem }
         }
 
         .btn-inner {
@@ -175,10 +185,7 @@ body {
                 transition: .1s ease;
             }
 
-            &::after {
-                width: 1rem;
-                left: 55%;
-            }
+            &::after { width: 1rem; left: 55% }
 
             .ripple {
                 --xOff: 0px;
@@ -201,22 +208,39 @@ body {
         & + .base {
             --clr: var(--buzzer-base, hsl(38 85 23));
             --darker-clr: hsl(from var(--clr) h s calc(l - 3));
-            position: absolute;
-            position-anchor: --btn;
             width: calc(12rem + 1.4rem);
             height: 9rem;
-            position-area: top;
-            translate: 0 calc(100% + 1.7rem);
+            margin-top: 2.3rem;
             border-radius: var(--radius-circle);
             background-color: var(--clr);
             z-index: -1;
             border: 2px solid var(--darker-clr);
             box-shadow: 0 .25rem 0 var(--clr), 0 .5rem 0 var(--clr);
             transition: .1s ease;
-            .btn-container:has(.btn-outer:active) & { translate: 0 calc(100% + 1.2rem) }
-
-            :not(.can-buzz) + & { filter: grayscale(100%) }
         }
+
+        body:not(.america-style) &::before { display: none }
+
+        &::before {
+            content: '★';
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            translate: 0 -1.4rem;
+            display: grid;
+            place-items: center;
+            z-index: 1;
+            font-size: 6.5rem;
+            color: white;
+            text-shadow: 0 0 2rem white;
+            transform-origin: 50% 50%;
+            transition: .1s ease;
+            pointer-events: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        &:not(.buzz-winner)::before { opacity: 0; scale: 0.8; }
     }
 
     #status-msg {
@@ -385,28 +409,4 @@ input[type=number] {
     height: 100%;
     justify-content: center;
     gap: 1rem;
-}
-
-/* Buzz Winner State */
-.btn-outer.buzz-winner {
-    background: linear-gradient(to bottom right, hsl(120 100 40), hsl(120 100 35)) !important;
-    box-shadow: 0 0 15px hsl(120 100 50), 0 0 0 3px hsl(120 100 30) !important;
-    filter: none !important;
-    pointer-events: none;
-}
-.btn-outer.buzz-winner .btn-inner {
-    background: linear-gradient(to bottom right, hsl(120 100 65), hsl(120 100 40)) !important;
-}
-.btn-outer.buzz-winner + .base {
-    --clr: hsl(120 85 23) !important;
-    filter: none !important;
-}
-
-/* Buzz Loser State */
-.btn-outer.buzz-loser {
-    filter: grayscale(80%) opacity(50%) !important;
-    pointer-events: none;
-}
-.btn-outer.buzz-loser + .base {
-    filter: grayscale(80%) opacity(50%) !important;
 }
