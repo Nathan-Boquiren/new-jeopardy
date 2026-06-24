@@ -23,7 +23,7 @@ a {
     padding: 2rem;
     width: clamp(10rem, 50vw, 12rem);
     aspect-ratio: 6/5;
-    background-color: var(--primary-light-3);
+    background-color: var(--secondary-300, var(--primary-700));
     font-size: clamp(1.5rem, 8vw, 2rem);
     cursor: pointer;
     text-decoration: none;
@@ -32,12 +32,4 @@ a {
         transform: translateY(5px) scale(.98);
         background-color: var(--primary-light);
     }
-}
-
-.qr-code {
-    position: absolute;
-    width: 20rem;
-    bottom: 2rem;
-    right: 2rem;
-    @media(max-width: 700px) { display: none }
 }

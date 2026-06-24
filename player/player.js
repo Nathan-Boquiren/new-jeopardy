@@ -1,6 +1,5 @@
 import { db, auth, onAuthStateChanged, ref, set, child, get, onValue, serverTimestamp } from "../firebase.js";
 
-
 // DOM Elements
 const form = document.getElementById("join-game-page");
 const finalJeopardyPage = document.getElementById("final-jeopardy-page");
@@ -43,7 +42,7 @@ function createPlayerInDB({ code, playerId, name }) {
     const playerRef = ref(db, `games/${gameCode}/players/${playerId}`);
     get(playerRef).then((playerSnapshot) => {
       const existing = playerSnapshot.val();
-      const initialScore = (existing && typeof existing.score === "number") ? existing.score : 0;
+      const initialScore = existing && typeof existing.score === "number" ? existing.score : 0;
       set(playerRef, {
         name: name,
         score: initialScore,

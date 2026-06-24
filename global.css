@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Code:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded&icon_names=arrow_drop_down,check&display=block');
+
 *, *::before, *::after {
     box-sizing: border-box;
     padding: 0;
@@ -6,28 +9,52 @@
     corner-shape: squircle;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Murecho:wght@100..900&display=swap');
-
 /* ===== Variables ===== */
 
 :root {
-    --primary-dark-2: hsl(240 100 22);
-    --primary-dark: hsl(240 100 25);
-    --primary: hsl(240 100 30);
-    --primary-light: hsl(240 72 37);
-    --primary-light-1: hsl(240 79 35);
-    --primary-light-2: hsl(240 54 44);
-    --primary-light-3: hsl(240 43 51);
+    --primary-100: hsl(from var(--primary-300) h s calc(l - 8));
+    --primary-200: hsl(from var(--primary-300) h s calc(l - 5));
+    --primary-300: hsl(240 100 30); /* Main Primary Color */
+    --primary-400: hsl(from var(--primary-300) h calc(s - 28) calc(l + 7));
+    --primary-500: hsl(from var(--primary-300) h calc(s - 21) calc(l + 5));
+    --primary-600: hsl(from var(--primary-300) h calc(s - 46) calc(l + 14));
+    --primary-700: hsl(from var(--primary-300) h calc(s - 57) calc(l + 21));
+
     --accent: hsl(50 100 45);
-    --accent-clr-light: hsl(54 100 50);
+    --accent-clr-light: hsl(from var(--accent) h s calc(l + 5));
     --accent-clr-dark: hsl(from var(--accent) h calc(s + 20) calc(l - 20));
-    --accent-font: 'Anton', Arial, Helvetica, sans-serif;
-    --san-serif: 'Murecho', Arial, Helvetica, sans-serif;
+
+    --accent-font: 'Bebas Neue', Arial, Helvetica, sans-serif;
+    --san-serif: 'DM Sans', Arial, Helvetica, sans-serif;
+    --code-font: 'Fira Code', 'DM Sans', Arial, Helvetica, sans-serif;
+
+
+    --radius-50: 1.5rem;
+    --radius-100: 2rem;
+    --radius-200: 3rem;
+    --radius-300: 5rem;
+    --radius-pill: 100vmax;
+    --radius-circle: 50%;
+
     interpolate-size: allow-keywords;
 }
 
+:root:has(body.america-style) {
+    --primary-300: hsl(225 100 22);
+    --secondary-300: hsl(355 95 24);
+    --secondary-400: hsl(355 65 40);
+    --accent: white;
+    
+    --radius-50: .5rem;
+    --radius-100: 1rem;
+    --radius-200: 1.5rem;
+    --radius-300: 2rem;
+
+    *, *::before, *::after { corner-shape: round }
+}
+
 body {
-    background-color: var(--primary);
+    background-color: var(--primary-300);
     height: 100dvh;
     position: relative;
 }
@@ -40,7 +67,10 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
 }
 
-.accent-font { font-family: var(--accent-font) }
+.accent-font {
+    font-family: var(--accent-font);
+    font-weight: 400;
+}
 
 .txt-shadow {text-shadow: 2px 2px 3px hsl(0 0 0 / .2)}
 
@@ -48,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .pill-btn {
     padding: .8rem 2rem;
-    border-radius: 100vmax;
+    border-radius: var(--radius-pill);
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -69,7 +99,8 @@ h1, h2, h3, h4, h5, h6 {
     
     &, span {
         color: var(--accent);
-        font-weight: 700;
+        font-family: var(--san-serif);
+        font-weight: 600;
         font-size: clamp(1.5rem, 5vw, 2rem);
     }
 
@@ -77,16 +108,16 @@ h1, h2, h3, h4, h5, h6 {
     #app:not(:has(.prblm-btn:not(.clicked))) &:is(#final-jeopardy-btn),
     &:is(.filled) {
         pointer-events: all;
-        background-color: var(--primary-light-3);
+        background-color: var(--secondary-300, var(--primary-700));
         --icon-clr: var(--accent);
-        &:hover:not(:active) { translate: 0 -5px }
+        &:active { translate: 0 5px }
     }
 }
 
 /* ===== Depth Styles ===== */
 
 .depth {
-    border-radius: 2rem;
+    border-radius: var(--radius-100);
     box-shadow: inset 0 1px 2px hsl(0 0 100 /.3),
                 inset 0 -1px 2px hsl(0 0 0 /.2),
                 2px 2px 5px hsl(0 0 0 / .2);
@@ -98,28 +129,46 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     overflow: clip;
 
-    &::before, &::after {
-        content: '';
-        position: absolute;
-        aspect-ratio: 1;
-        background-color: var(--primary-light-1);
-        border-radius: 50%;
-        z-index: -1;
+    &:not(.america-style), .america-style:not:has(&) {
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            aspect-ratio: 1;
+            background-color: var(--primary-500);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        &::before {
+            width: max(20%, 10rem);
+            rotate: 30deg;
+            top: 0;
+            left: 0;
+        }
+
+        &::after {
+            width: max(30%, 15rem);
+            rotate: -30deg;
+            bottom: 0;
+            right: 0;
+        }
     }
+
 
     &::before {
-        width: max(20%, 10rem);
-        rotate: 30deg;
-        top: 0;
-        left: 0;
+        content: "";
+        position: absolute;
+        inset: 3rem auto auto 3rem;
+        display: block;
+        z-index: -1;
+        width: max(45%, 20rem);
+        aspect-ratio: 19 / 10;
+        background-image: linear-gradient(to bottom right, transparent 10%, var(--primary-300) 85%), url(assets/imgs/Flag_of_the_United_States.svg);
+        background-size: cover;
+        @media(max-width: 700px) { display: none }
     }
-
-    &::after {
-        width: max(30%, 15rem);
-        rotate: -30deg;
-        bottom: 0;
-        right: 0;
-    }
+    
+    
 }
 
 /* View Transition */

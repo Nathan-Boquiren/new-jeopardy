@@ -1,8 +1,18 @@
 @keyframes fadeIn { from { translate: 0 -1rem; opacity: 0 } }
 @keyframes scaleFade { to { width: 200%; opacity: 0 } }
 
+:root {
+    /* Buzzer colors */
+    --buzzer-outer-bg-1: hsl(50 100 40);
+    --buzzer-outer-bg-2: hsl(50 100 35);
+    --buzzer-outer-shadow: hsl(50 100 30);
+    --buzzer-inner-bg-1: hsl(50 100 65);
+    --buzzer-inner-bg-2: hsl(50 100 40);
+    --buzzer-base: hsl(38 85 23);
+}
+
 body {
-    background-color: var(--primary);
+    background-color: var(--primary-300);
     height: 100dvh;
 }
 
@@ -51,7 +61,7 @@ body {
 
     .input-container {
         padding: 1.5rem;
-        background-color: var(--primary-light);
+        background-color: var(--primary-400);
         position: relative;
         &, > * { transition: .2s ease }
 
@@ -59,7 +69,7 @@ body {
 
         label {
             display: block;
-            color: var(--primary-light-3);
+            color: var(--primary-700);
             font-size: 1.5rem;
             position: absolute;
             top: 50%;
@@ -67,6 +77,7 @@ body {
             translate: -50% -50%;
             padding: .4rem;
             border-radius: .5rem;
+            
             :is(input:focus, input:valid) + & {
                 top: 0;
                 left: 1.5rem;
@@ -79,7 +90,7 @@ body {
         input {
             background-color: transparent;
             border: none;
-            border-radius: 1.5rem;
+            border-radius: var(--radius-50);
             box-shadow:
                 inset 0 1px 2px hsl(0 0 0 / .7),
                 inset 0 -1px 2px hsl(0 0 100 / .2);
@@ -90,7 +101,7 @@ body {
 
             &:focus {
                 outline: none;
-                background-color: var(--primary-light-2);
+                background-color: var(--primary-600);
             }
         }
 
@@ -103,7 +114,7 @@ body {
 #main-player-page {
     .player-info {
         padding: 1rem 2rem;
-        background-color: var(--primary-light-2);
+        background-color: var(--secondary-300, var(--primary-600));
         width: max(12rem, 50%);
         text-align: center;
     }
@@ -122,17 +133,17 @@ body {
         width: 12rem;
         height: 10rem;
         border-radius: 50% 50% 50% 50% / 40% 40% 40% 40%;
-        background: linear-gradient(to bottom right, hsl(50 100 40), hsl(50 100 35));
+        background: linear-gradient(to bottom right, var(--buzzer-outer-bg-1, hsl(50 100 40)), var(--buzzer-outer-bg-2, hsl(50 100 35)));
         cursor: pointer;
         position: relative;
-        box-shadow: 0 0 0 3px hsl(50 100 30);
+        box-shadow: 0 0 0 3px var(--buzzer-outer-shadow, hsl(50 100 30));
         z-index: 0;
         transition: .1s ease;
         anchor-name: --btn;
 
         &:active {
             height: 8rem;
-            border-radius: 50%;
+            border-radius: var(--radius-circle);
             translate: 0 1.5rem;
             .btn-inner { &::before, &::after { left: 100% } }
         }
@@ -147,8 +158,8 @@ body {
             z-index: 0;
             inset-inline: 0;
             height: 8rem;
-            border-radius: 50%;
-            background: linear-gradient(to bottom right, hsl(50 100 65), hsl(50 100 40));
+            border-radius: var(--radius-circle);
+            background: linear-gradient(to bottom right, var(--buzzer-inner-bg-1, hsl(50 100 65)), var(--buzzer-inner-bg-2, hsl(50 100 40)));
             overflow: clip;
             anchor-name: --inner;
 
@@ -179,7 +190,7 @@ body {
                 left: var(--xOff);
                 top: var(--yOff);
                 translate: -50% -50%;
-                border-radius: 50%;
+                border-radius: var(--radius-circle);
                 background-color: hsl(0 0 100 / .3);
                 filter: blur(3px);
                 z-index: -1;
@@ -188,7 +199,7 @@ body {
         }
 
         & + .base {
-            --clr: hsl(38 85 23);
+            --clr: var(--buzzer-base, hsl(38 85 23));
             --darker-clr: hsl(from var(--clr) h s calc(l - 3));
             position: absolute;
             position-anchor: --btn;
@@ -196,7 +207,7 @@ body {
             height: 9rem;
             position-area: top;
             translate: 0 calc(100% + 1.7rem);
-            border-radius: 50%;
+            border-radius: var(--radius-circle);
             background-color: var(--clr);
             z-index: -1;
             border: 2px solid var(--darker-clr);
@@ -207,15 +218,26 @@ body {
             :not(.can-buzz) + & { filter: grayscale(100%) }
         }
     }
+
+    #status-msg {
+        font-family: var(--code-font);
+        font-size: .8rem;
+        color: hsl(from var(--primary-300) h calc(s - 15) calc(l + 50));
+        margin-bottom: 1.5rem;
+        text-shadow: 0 2px 4px hsl(0 0 0 /.5);
+        min-height: 1.5rem;
+        text-align: center;
+    }
 }
 
 .score-wrapper {
     position: relative;
     padding: 1rem 2rem;
-    background-color: var(--primary-light-2);
+    background-color: var(--primary-600);
     text-align: center;
     font-family: var(--accent-font);
     color: hsl(120 61 50);
+    .america-style & { color: var(--accent); }
     font-size: 2rem;
 
     &::before {
@@ -240,9 +262,9 @@ body {
         * { width: 100% }
 
         input, textarea {
-            background-color: var(--primary-dark-2);
+            background-color: var(--primary-100);
             border: none;
-            border-radius: 2rem;
+            border-radius: var(--radius-100);
             padding: 1.5rem;
             box-shadow:
                 inset 0 1px 2px hsl(0 0 0 / .7),
@@ -253,7 +275,7 @@ body {
             
             &:focus {
                 outline: none;
-                background-color: var(--primary-dark);
+                background-color: var(--primary-200);
             }
         }
         
