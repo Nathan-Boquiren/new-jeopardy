@@ -1,0 +1,84 @@
+{
+    "topicName": "America 250!",
+    "mainCategories": [
+        {
+            "name": "And I Quote",
+            "questions": {
+                "200": {
+                    "question": "",
+                    "answer": ""
+                },
+                "400": {
+                    "question": "",
+                    "answer": ""
+                },
+                "600": {
+                    "question": "",
+                    "answer": ""
+                },
+                "800": {
+                    "question": "",
+                    "answer": ""
+                },
+                "1000": {
+                    "question": "",
+                    "answer": ""
+                }
+            }
+        },
+        {
+            "name": "And I Quote",
+            "questions": {
+                "200": {
+                    "question": "",
+                    "answer": ""
+                },
+                "400": {
+                    "question": "",
+                    "answer": ""
+                },
+                "600": {
+                    "question": "",
+                    "answer": ""
+                },
+                "800": {
+                    "question": "",
+                    "answer": ""
+                },
+                "1000": {
+                    "question": "",
+                    "answer": ""
+                }
+            }
+        },
+        {
+            "name": "Misc.",
+            "questions": {
+                "200": {
+                    "question": "",
+                    "answer": ""
+                },
+                "400": {
+                    "question": "",
+                    "answer": ""
+                },
+                "600": {
+                    "question": "",
+                    "answer": ""
+                },
+                "800": {
+                    "question": "",
+                    "answer": ""
+                },
+                "1000": {
+                    "question": "",
+                    "answer": ""
+                }
+            }
+        }
+    ],
+    "finalJeopardy": {
+        "question": "",
+        "answer": ""
+    }
+}

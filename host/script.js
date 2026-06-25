@@ -275,7 +275,7 @@ class JeopardyItem {
     popUp.classList.add("show-question");
     popUp.querySelector(".price").innerText = this.price;
 
-    timerBar.style.width = "100%";
+    timerBar.style.setProperty("--width", "100%");
 
     game.currentPrice = this.price;
 
@@ -400,20 +400,20 @@ function startCountdown(duration) {
     const elapsed = (now - start) / 1000;
     const remaining = Math.max(0, duration - elapsed);
     const percent = (remaining / duration) * 100;
-    timerBar.style.width = `${percent}%`;
+    timerBar.style.setProperty("--width", `${percent}%`);
 
     const isVisible = getComputedStyle(questionWrapper).display !== "none";
 
     if (remaining > 0 && isVisible) {
       requestAnimationFrame(update);
     } else if (remaining <= 0 && isVisible) {
-      timerBar.style.width = "100%";
+      timerBar.style.setProperty("--width", "100%");
       timeMsg.classList.add("show");
       setTimeout(() => {
         timeMsg.classList.remove("show");
       }, 2000);
     } else if (remaining <= 0 && !isVisible) {
-      timerBar.style.width = "100%";
+      timerBar.style.setProperty("--width", "100%");
     }
   }
 
