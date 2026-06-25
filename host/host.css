@@ -418,7 +418,7 @@ aside {
         min-width: 4ch;
         transform-origin: 100% 50%;
         transition: all 0.2s ease;
-        &.highest-score { color: hsl(120 61 50) }
+        &.highest-score { color: var(--high-score-clr) }
         &:hover { scale: 1.1 }
         &.disabled { pointer-events: none }
     }

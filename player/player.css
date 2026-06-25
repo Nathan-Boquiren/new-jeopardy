@@ -260,7 +260,7 @@ body {
     background-color: var(--primary-600);
     text-align: center;
     font-family: var(--accent-font);
-    color: hsl(120 61 50);
+    color: var(--high-score-clr);
     .america-style & { color: var(--accent); }
     font-size: 2rem;
 

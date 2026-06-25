@@ -24,6 +24,8 @@
     --accent-clr-light: hsl(from var(--accent) h s calc(l + 5));
     --accent-clr-dark: hsl(from var(--accent) h calc(s + 20) calc(l - 20));
 
+    --high-score-clr: hsl(120 61 50);
+
     --accent-font: 'Bebas Neue', Arial, Helvetica, sans-serif;
     --san-serif: 'DM Sans', Arial, Helvetica, sans-serif;
     --code-font: 'Fira Code', 'DM Sans', Arial, Helvetica, sans-serif;
@@ -44,6 +46,7 @@
     --secondary-300: hsl(355 95 24);
     --secondary-400: hsl(355 65 40);
     --accent: white;
+    --high-score-clr: hsl(210 90 70);
     
     --radius-50: .5rem;
     --radius-100: 1rem;
@@ -154,20 +157,16 @@ h1, h2, h3, h4, h5, h6 {
         }
     }
 
-
     &::before {
         content: "";
         position: absolute;
         inset: 0;
         display: block;
         z-index: -1;
-        aspect-ratio: 19 / 10;
         background-image: linear-gradient(to bottom right, transparent 10%, var(--primary-300) 90%), url(assets/imgs/Flag_of_the_United_States.svg);
         background-size: cover;
         @media(max-width: 700px) { display: none }
     }
-    
-    
 }
 
 /* View Transition */
