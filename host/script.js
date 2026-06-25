@@ -1,7 +1,7 @@
-
 import { updateScoreInBackend, setQuestionActiveState, setFinalJeopardyState, finalizeScore, removePlayerFromBackend } from "./host.js";
 
 // ========== DOM Elements ==========
+const createGameBtn = document.getElementById("create-game");
 const startBtn = document.getElementById("start-btn");
 const questionSelector = document.getElementById("question-selector");
 const topicNameWrappers = document.querySelectorAll(".topic-name");
@@ -17,11 +17,16 @@ const timeMsg = document.getElementById("time-msg");
 const finalJeopardyBtn = document.getElementById("final-jeopardy-btn");
 const winnerContainer = document.getElementById("winner-container");
 const endPageHeader = document.getElementById("winner-header");
+const cl = console.log;
 
 const jeopardyTheme = new Audio("../assets/sfx/final-jeopardy-theme.mp3");
 
+// ========== Variables ==========
+let game;
+
 // Get selected category path from dropdown
 function getCategoryPath() {
+  cl(questionSelector.value);
   return questionSelector.value;
 }
 
@@ -145,7 +150,7 @@ class Player {
     const el = document.createElement("span");
     el.classList.add("player-score", "accent-font");
     el.innerText = this.score;
-    
+
     el.addEventListener("click", (e) => {
       const multiplier = e.shiftKey ? -1 : 1;
       this.updateScore(multiplier * game.currentPrice);
@@ -230,7 +235,7 @@ class Category {
 
   getQuestions(itemData) {
     return Object.fromEntries(
-      Object.entries(itemData).map(([points, data]) => [points, new JeopardyItem(this.name, data, parseInt(points, 10))])
+      Object.entries(itemData).map(([points, data]) => [points, new JeopardyItem(this.name, data, parseInt(points, 10))]),
     );
   }
 
@@ -282,9 +287,20 @@ class JeopardyItem {
     popUp.querySelector("#question-txt").innerHTML = question;
     popUp.querySelector("#answer-txt").innerHTML = answer;
 
+    // Log question and answer in console for host
+    logQA(this.categoryName, this.price, question, answer);
+
     // Set Question Active State in backend
     setQuestionActiveState(true);
   }
+}
+
+function logQA(category, price, question, answer) {
+  const clean = answer.replace(/<img[^>]*>/gi, "");
+  console.group(`${category} - $${price}`);
+  console.log("%cQ:", "font-weight: bold; color: #4FC3F7", question);
+  console.log("%cA:", "font-weight: bold; color: #81C784", clean);
+  console.groupEnd();
 }
 
 class FinalJeopardy {
@@ -338,9 +354,10 @@ function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// ========== Variables ==========
-const game = new Game(getCategoryPath());
-game.buildQuestions();
+createGameBtn.addEventListener("click", () => {
+  game = new Game(getCategoryPath());
+  game.buildQuestions();
+});
 
 // ========== Start Page ==========
 

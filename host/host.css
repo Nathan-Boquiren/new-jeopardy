@@ -325,14 +325,13 @@ body {
 /* Game Board */
 
 #game-board {
+    anchor-name: --board;
     --hdr-gap: 1rem;
     --hdr-height: 9rem;
-
-    anchor-name: --board;
-
+    
     flex: 1 1 70%;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     grid-template-rows: calc(var(--hdr-gap) + var(--hdr-height)) repeat(5, 1fr);
     grid-auto-flow: column;
     gap: 1rem;

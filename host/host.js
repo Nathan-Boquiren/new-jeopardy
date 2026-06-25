@@ -1,5 +1,17 @@
-
-import { onDisconnect, auth, onAuthStateChanged, db, ref, set, onValue, get, child, runTransaction, onChildAdded, serverTimestamp } from "../firebase.js";
+import {
+  onDisconnect,
+  auth,
+  onAuthStateChanged,
+  db,
+  ref,
+  set,
+  onValue,
+  get,
+  child,
+  runTransaction,
+  onChildAdded,
+  serverTimestamp,
+} from "../firebase.js";
 import { game, startCountdown, displayBuzzWinner } from "./script.js";
 
 // DOM Elements
@@ -12,7 +24,6 @@ let gameCode;
 function generateCode() {
   return Math.floor(100000 + Math.random() * 900000);
 }
-
 
 onAuthStateChanged(auth, (user) => {
   createGameBtn.addEventListener("click", () => {
@@ -130,7 +141,6 @@ function stopBuzzListener() {
   }
 }
 
-
 function setFinalJeopardyState(state) {
   const finalJeopardyRef = ref(db, `games/${gameCode}/finalJeopardy`);
   set(finalJeopardyRef, state);
@@ -178,13 +188,11 @@ function setQuestionActiveState(state) {
     resetBuzzIns();
   }
 }
+
 function resetBuzzIns() {
   const buzzesRef = ref(db, `games/${gameCode}/buzzes`);
   const buzzInWinnerRef = ref(db, `games/${gameCode}/buzzInWinner`);
-  return Promise.all([
-    set(buzzesRef, {}),
-    set(buzzInWinnerRef, null),
-  ]);
+  return Promise.all([set(buzzesRef, {}), set(buzzInWinnerRef, null)]);
 }
 
 function setWagerAmounts(players) {
