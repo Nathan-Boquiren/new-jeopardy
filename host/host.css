@@ -413,6 +413,7 @@ aside {
         min-width: 4ch;
         transform-origin: 100% 50%;
         transition: all 0.2s ease;
+        user-select: none;
         &.highest-score { color: var(--high-score-clr) }
         &:hover { scale: 1.1 }
         &.disabled { pointer-events: none }
@@ -592,6 +593,40 @@ aside {
         align-self: flex-end;
         display: flex;
     }
+}
+
+/* Player Buzz Permission Toggle */
+
+#buzzPermissionToggle {
+    --disabled-clr: hsl(from var(--secondary-300, var(--primary-700)) h calc(s - 50) calc(l + 10));
+    --enabled-clr: var(--secondary-300, var(--primary-700));
+
+    position: relative;
+    align-self: flex-end;
+    width: 5rem;
+    aspect-ratio: 2/1;
+    background-color: var(--disabled-clr);
+    border-radius: var(--radius-pill);
+    border: initial;
+    cursor: pointer;
+    transition: .2s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        aspect-ratio: 1;
+        background-color: var(--accent);
+        inset-block: 0;
+        left: 0;
+        margin: 6px;
+        border-radius: var(--radius-circle);
+        transition: .2s ease;
+    }
+
+    &:hover:not(:active) { translate: 0 -2px }
+
+    &.enabled { background-color: var(--enabled-clr) }
+    &.enabled::before { translate: calc(100% + 12px) }
 }
 
 /* Final Jeopardy Wager Msg */

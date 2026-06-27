@@ -9,7 +9,6 @@
     corner-shape: squircle;
 }
 
-
 /* ===== Variables ===== */
 
 :root {
@@ -30,7 +29,6 @@
     --accent-font: 'Bebas Neue', Arial, Helvetica, sans-serif;
     --san-serif: 'DM Sans', Arial, Helvetica, sans-serif;
     --code-font: 'Fira Code', 'DM Sans', Arial, Helvetica, sans-serif;
-
 
     --radius-50: 1.5rem;
     --radius-100: 2rem;

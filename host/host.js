@@ -12,12 +12,13 @@ import {
   onChildAdded,
   serverTimestamp,
 } from "../firebase.js";
-import { game, startCountdown, displayBuzzWinner } from "./script.js";
+import { game, startCountdown, displayBuzzWinner, activateBuzzPermission } from "./script.js";
 
 // DOM Elements
 const startPage = document.getElementById("start-page");
 const createGameBtn = document.getElementById("create-game");
 const gameCodeWrapper = document.getElementById("game-code");
+const buzzPermissionToggle = document.getElementById("buzzPermissionToggle");
 
 let gameCode;
 
@@ -186,6 +187,8 @@ function setQuestionActiveState(state) {
     set(stateRef, false);
     stopBuzzListener();
     resetBuzzIns();
+    buzzPermissionToggle.classList.toggle("enabled");
+    buzzPermissionToggle.removeEventListener("click", activateBuzzPermission);
   }
 }
 
@@ -215,4 +218,11 @@ function removePlayerFromBackend(playerUid) {
   set(playerRef, null);
 }
 
-export { updateScoreInBackend, setQuestionActiveState, setFinalJeopardyState, finalizeScore, removePlayerFromBackend };
+export {
+  updateScoreInBackend,
+  setQuestionActiveState,
+  setFinalJeopardyState,
+  finalizeScore,
+  removePlayerFromBackend,
+  buzzPermissionToggle,
+};

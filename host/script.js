@@ -1,4 +1,11 @@
-import { updateScoreInBackend, setQuestionActiveState, setFinalJeopardyState, finalizeScore, removePlayerFromBackend } from "./host.js";
+import {
+  updateScoreInBackend,
+  setQuestionActiveState,
+  setFinalJeopardyState,
+  finalizeScore,
+  removePlayerFromBackend,
+  buzzPermissionToggle,
+} from "./host.js";
 
 // ========== DOM Elements ==========
 const createGameBtn = document.getElementById("create-game");
@@ -244,7 +251,7 @@ class Category {
     el.classList.add("category-column");
     const header = document.createElement("div");
     header.classList.add("category-header", "txt-shadow", "depth", "accent-font");
-    header.innerText = this.name;
+    header.innerHTML = this.name;
     el.append(header);
     for (let i = 200; i <= 1000; i += 200) {
       el.append(this.questions[`${i}`].el);
@@ -290,9 +297,16 @@ class JeopardyItem {
     // Log question and answer in console for host
     logQA(this.categoryName, this.price, question, answer);
 
-    // Set Question Active State in backend
-    setQuestionActiveState(true);
+    // Add event listener to Buzz Permission Toggle
+    buzzPermissionToggle.addEventListener("click", activateBuzzPermission);
   }
+}
+
+// Helper function to set question active state in backend
+function activateBuzzPermission() {
+  console.log("Players can buzz in!");
+  buzzPermissionToggle.classList.toggle("enabled");
+  setQuestionActiveState(true);
 }
 
 function logQA(category, price, question, answer) {
@@ -436,4 +450,4 @@ function createElement(tag, classes = [], text = "") {
   return element;
 }
 
-export { game, startCountdown, displayBuzzWinner };
+export { game, startCountdown, displayBuzzWinner, activateBuzzPermission };
