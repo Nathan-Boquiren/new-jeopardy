@@ -5,24 +5,24 @@
             "name": "And I Quote",
             "questions": {
                 "200": {
-                    "question": "",
-                    "answer": ""
+                    "question": "When addressing the Virginia House of Burgesses in 1775, Patrick Henry ended his speech with these famous words.",
+                    "answer": "What is \"Give me liberty, or give me death\"?<img src='../assets/imgs/america-250/henry.jpg'>"
                 },
                 "400": {
-                    "question": "",
-                    "answer": ""
+                    "question": "In the Declaration of Independence, these three things, are described as \"certain unalienable rights.\"",
+                    "answer": "What is \"Life, Liberty and the pursuit of Happiness\"?<img src='../assets/imgs/america-250/declaration.jpg'>"
                 },
                 "600": {
-                    "question": "",
-                    "answer": ""
+                    "question": "According to Lincoln's Gettysburg Address, the nation brought forth upon this continent was dedicated to this proposition.",
+                    "answer": "What is \"that all men are created equal.\"?<img src='../assets/imgs/america-250/gettysburg.jpg'>"
                 },
                 "800": {
-                    "question": "",
-                    "answer": ""
+                    "question": "The famous quote \"The only thing we have to fear is fear itself\" was first made famous by this president, in 1933.",
+                    "answer": "Who is Franklin D. Roosevelt?<img src='../assets/imgs/america-250/roosevelt-quote.jpg'>"
                 },
                 "1000": {
-                    "question": "",
-                    "answer": ""
+                    "question": "Theodore Roosevelt used this phrase to describe his foreign policy, in which he expanded the U.S. Navy and ended the Russo-Japanese War.",
+                    "answer": "What is \"Speak softly and carry a big stick.\"?<img src='../assets/imgs/america-250/teddy-roosevelt.jpg'>"
                 }
             }
         },
@@ -30,24 +30,24 @@
             "name": "Presidential Matters",
             "questions": {
                 "200": {
-                    "question": "",
-                    "answer": ""
+                    "question": "The President of the United States is elected by the electoral college, which has this many electors.",
+                    "answer": "What is 538?<img src='../assets/imgs/america-250/election.jpg'>"
                 },
                 "400": {
-                    "question": "",
-                    "answer": ""
+                    "question": "He was the first Commander in Chief to be born a U.S. citizen.",
+                    "answer": "Who is Martin Van Buren?<img src='../assets/imgs/america-250/buren.jpg'>"
                 },
                 "600": {
-                    "question": "",
-                    "answer": ""
+                    "question": "All U.S. Presidents either help prior political office or served in the military...except this one. Frankly, he did a tremendous job.",
+                    "answer": "Who is Donald J. Trump?<img src='../assets/imgs/america-250/trump.jpg'>"
                 },
                 "800": {
-                    "question": "",
-                    "answer": ""
+                    "question": "This president had the longest inauguration speech. He did so in freezing rain. He died a month later.",
+                    "answer": "Who is William Henry Harrison?<img src='../assets/imgs/america-250/harrison.jpg'>"
                 },
                 "1000": {
-                    "question": "",
-                    "answer": ""
+                    "question": "Until Franklin D. Roosevelt served four consecutive terms, there were no term limits. This amendment changed that.",
+                    "answer": "What is the 22nd Amendment?<img src='../assets/imgs/america-250/fdr-term.jpg'>"
                 }
             }
         },
@@ -55,24 +55,24 @@
             "name": "American Legacy",
             "questions": {
                 "200": {
-                    "question": "",
-                    "answer": ""
+                    "question": "This 1803 land deal with France roughly doubled the size of the United States for about 3 cents per acre.",
+                    "answer": "What is the Louisiana Purchase?<img src='https://cdn.britannica.com/92/2192-050-2BE7B37C/Louisiana-Purchase.jpg'>"
                 },
                 "400": {
-                    "question": "",
-                    "answer": ""
+                    "question": "Lincoln issued this proclamation on January 1, 1863, declaring that enslaved people in Confederate states were\"forever free.\"",
+                    "answer": "What is the Emancipation Proclamation?<img src='https://histicle.com/wp-content/uploads/2024/06/milestones-to-emancipation-proclamation-enacted-1024x683.png'>"
                 },
                 "600": {
-                    "question": "",
-                    "answer": ""
+                    "question": "The Statue of Liberty is a symbol of... well, liberty. But this is the country that gifted the statue to the U.S.",
+                    "answer": "What is France?<img src='https://upload.wikimedia.org/wikipedia/commons/d/d3/Statue_of_Liberty,_NY.jpg'>"
                 },
                 "800": {
-                    "question": "",
-                    "answer": ""
+                    "question": "While the Soviet Union beat America to orbit, we ultimately won the space race by landing on the moon in this year.",
+                    "answer": "What is 1969?<img src='https://cdn.abcotvs.com/dip/images/5391653_071219-cc-getty-armstrong-img.jpg?w=1600'>"
                 },
                 "1000": {
-                    "question": "",
-                    "answer": ""
+                    "question": "On Christmas Day 1991, this man resigned as the final leader of the Soviet Union, delivering America its hard-won victory in the 45-year Cold War.",
+                    "answer": "Who is Mikhail Gorbachev?<img src='http://cdn.history.com/sites/2/2013/12/ronald-reagan-and-mikhail-gorbachev-1.jpg'>"
                 }
             }
         },
@@ -80,49 +80,49 @@
             "name": "Red, White & Who?",
             "questions": {
                 "200": {
-                    "question": "",
-                    "answer": ""
+                    "question": "He rode at midnight, shouting \"The British are coming!\"",
+                    "answer": "Who is Paul Revere?<img src='../assets/imgs/america-250/revere.jpg'>"
                 },
                 "400": {
-                    "question": "",
-                    "answer": ""
+                    "question": "These brothers achieved the first successful powered airplane flight in 1903, marking a milestone in U.S. innovation and ingenuity.",
+                    "answer": "Who are Wilbur and Orville Wright?<img src='../assets/imgs/america-250/wright.jpg'>"
                 },
                 "600": {
-                    "question": "",
-                    "answer": ""
+                    "question": "This fictional hero fought for truth, justice, and the American way.",
+                    "answer": "Who is Superman?<img src='../assets/imgs/america-250/superman.jpg'>"
                 },
                 "800": {
-                    "question": "",
-                    "answer": ""
+                    "question": "Born Samuel Clemens in a small Missouri town, this author created a pen name and a distinct American voice. Later, he was called the father of American literature.",
+                    "answer": "Who is Mark Twain?<img src='../assets/imgs/america-250/twain.jpg'>"
                 },
                 "1000": {
-                    "question": "",
-                    "answer": ""
+                    "question": "This former U.S. Congressman, and self-proclaimed 'King of the Wild Frontier' died defending the Alamo in 1836 alongside 182 fellow Texans against thousands of Mexican troops.",
+                    "answer": "Who is Davy Crockett?<img src='../assets/imgs/america-250/crockett.jpg'>"
                 }
             }
         },
         {
-            "name": "Starts With 'F'",
+            "name": "Starts With \"F\"",
             "questions": {
                 "200": {
-                    "question": "",
-                    "answer": ""
+                    "question": "This patriotic American witnessed the flag still waving over Fort McHenry after battle and was inspired to write our national anthem.",
+                    "answer": "Who is Francis Scott Key?<img src='../assets/imgs/america-250/key.jpg'>"
                 },
                 "400": {
-                    "question": "",
-                    "answer": ""
+                    "question": "This word describes the system of government, established by the Constitution, that splits power between a national government and individual states.",
+                    "answer": "What is Federalism?<img src='../assets/imgs/america-250/federalism.jpg'>"
                 },
                 "600": {
-                    "question": "",
-                    "answer": ""
+                    "question": "Alexander Hamilton, James Madison, and John Jay wrote these 85 essays under a shared pen name to convince New Yorkers to ratify the Constitution.",
+                    "answer": "What are the Federalist Papers?<img src='../assets/imgs/america-250/papers.jpg'>"
                 },
                 "800": {
-                    "question": "",
-                    "answer": ""
+                    "question": "This Revolutionary War general never won a major battle, but his guerrilla raids in the South Carolina swamps frustrated the British so badly they called him 'The Swamp Fox.'",
+                    "answer": "Who is Francis Marion?<img src='../assets/imgs/america-250/marion.jpg'>"
                 },
                 "1000": {
-                    "question": "",
-                    "answer": ""
+                    "question": "Ratified in 1868, this amendment granted citizenship to formerly enslaved people and guaranteed them equal protection under the law.",
+                    "answer": "What is the Fourteenth Amendment?<img src='../assets/imgs/america-250/fourteenth.jpg'>"
                 }
             }
         },
@@ -130,30 +130,30 @@
             "name": "Misc.",
             "questions": {
                 "200": {
-                    "question": "",
-                    "answer": ""
+                    "question": "These four presidents, whose faces are carved into Mount Rushmore, were chosen to represent the nation's birth, growth, development, and preservation.",
+                    "answer": "Who are G. Washington, T. Jefferson, T. Roosevelt, and A. Lincoln?<img src='../assets/imgs/america-250/rushmore.jpg'>"
                 },
                 "400": {
-                    "question": "",
-                    "answer": ""
+                    "question": "This blue rectangular section in the upper hoist side of the American flag contains the 50 white stars.",
+                    "answer": "What is the canton?<img src='../assets/imgs/america-250/flag.jpg'>"
                 },
                 "600": {
-                    "question": "",
-                    "answer": ""
+                    "question": "This state was first to secede from the Union, which began the Civil War.",
+                    "answer": "What is South Carolina?<img src='../assets/imgs/america-250/carolina.jpg'>"
                 },
                 "800": {
-                    "question": "",
-                    "answer": ""
+                    "question": "Stretching 2,400 miles from Chicago to Santa Monica, this iconic American highway was dubbed 'The Mother Road' and became a symbol of freedom, westward dreams, and open road adventure.",
+                    "answer": "What is Route 66?<img src='../assets/imgs/america-250/66.jpg'>"
                 },
                 "1000": {
-                    "question": "",
-                    "answer": ""
+                    "question": "Before Washington D.C. was built, this city served as America's first capital, hosting the first Congress and the first presidential inauguration in 1789.",
+                    "answer": "What is New York City?<img src='../assets/imgs/america-250/york.jpg'>"
                 }
             }
         }
     ],
     "finalJeopardy": {
-        "question": "",
-        "answer": ""
+        "question": "Adopted by Congress in 1782, this three-word Latin phrase appears on the Great Seal, every coin in your pocket, and arguably defines the entire American experiment in a single breath. It means \"Out of many, one.\"",
+        "answer": "What is <em>E Pluribus Unum?</em><img src='assets/imgs/america-250/seal.png'>"
     }
 }

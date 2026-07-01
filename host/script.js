@@ -31,6 +31,9 @@ const jeopardyTheme = new Audio("../assets/sfx/final-jeopardy-theme.mp3");
 // ========== Variables ==========
 let game;
 
+// controls whether player buzz permission is controlled by host toggle btn.
+const buzzPermissionControlled = false;
+
 // Get selected category path from dropdown
 function getCategoryPath() {
   cl(questionSelector.value);
@@ -298,7 +301,9 @@ class JeopardyItem {
     logQA(this.categoryName, this.price, question, answer);
 
     // Add event listener to Buzz Permission Toggle
-    buzzPermissionToggle.addEventListener("click", activateBuzzPermission);
+    buzzPermissionControlled === true
+      ? buzzPermissionToggle.addEventListener("click", activateBuzzPermission)
+      : setQuestionActiveState(true);
   }
 }
 
