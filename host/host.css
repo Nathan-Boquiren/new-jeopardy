@@ -740,7 +740,7 @@ aside {
     
     .winner-name {
         border-radius: var(--radius-300);
-        background-color: var(--primary-400);
+        background-color: var(--secondary-300, var(--primary-400));
         font-size: clamp(4rem, 10vw, 8rem);
         padding: 1rem 2rem;
     }
